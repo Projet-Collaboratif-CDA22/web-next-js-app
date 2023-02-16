@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+npx --no -- commitlint --edit ${1} ||
+(
+  echo '\n❌⭕❌⭕ Lint Format Failed ❌⭕❌⭕
+    The above commit is not a conventional commit. Edit the message and retry.';
+    false;
+)
