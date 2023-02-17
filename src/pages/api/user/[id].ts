@@ -47,7 +47,10 @@ export default async function handler(
     case "DELETE":
       let deleteUser = await db
         .collection("users")
-        .findOneAndDelete({ id: parseInt(id as string) });
+        .findOneAndUpdate(
+          { id: parseInt(id as string) },
+          { $set: { isActive: false } }
+        );
       res.status(410).send(deleteUser);
       break;
   }
