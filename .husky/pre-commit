@@ -50,6 +50,6 @@ npm run build ||
     View the errors above to see why.'
     false;
 )
-
+echo '✅ Tests passed 100% !!!'
 # If everything passes... Now we can commit
-echo '✅ ✅ ✅ ✅ Amazing !! I am committing this now.'
+echo '✅  Amazing !! I am committing this now.'
