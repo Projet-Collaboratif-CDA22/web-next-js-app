@@ -11,7 +11,13 @@
     "format:prod": "prettier --write .next",
     "check-format:dev": "prettier --check src/",
     "check-format:prod": "prettier --check .next",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "cypress": "cypress open",
+    "e2e": "start-server-and-test dev http://localhost:3000 \"cypress open --e2e\"",
+    "e2e:headless": "start-server-and-test dev http://localhost:3000 \"cypress run --e2e\"",
+    "component": "cypress open --component",
+    "component:headless": "cypress run --component"
+
   },
   "dependencies": {
     "@next/font": "13.1.6",
@@ -29,10 +35,12 @@
   "devDependencies": {
     "@commitlint/cli": "^17.4.3",
     "@commitlint/config-conventional": "^17.4.3",
+    "cypress": "^12.5.1",
     "eslint-config-prettier": "^8.6.0",
     "husky": "^8.0.3",
     "lint-staged": "^13.1.2",
-    "prettier": "2.8.4"
+    "prettier": "2.8.4",
+    "start-server-and-test": "^1.15.4"
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown",

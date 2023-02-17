@@ -71,7 +71,8 @@ module.exports = {
             emoji: "🚀",
           },
           test: {
-            description: "Adding missing tests or correcting existing tests",
+            description:
+              "Adding missing cypress or correcting existing cypress",
             title: "Tests",
             emoji: "🚨",
           },
