@@ -8,9 +8,9 @@
     "start": "next start",
     "lint": "next lint",
     "format:dev": "prettier --write src/",
-    "format:prod": "prettier --write .",
+    "format:prod": "prettier --write .next",
     "check-format:dev": "prettier --check src/",
-    "check-format:prod": "prettier --check .",
+    "check-format:prod": "prettier --check .next",
     "prepare": "husky install"
   },
   "dependencies": {
