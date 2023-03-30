@@ -4,7 +4,7 @@ function Grid() {
   return (
     <>
       <div className="col-lg-12 col-md-12">
-        <a href="#">
+        <a href="src/components/Grid#">
           {/* Pour l'instant, on peux changer la couleur entre : blue, pink, pruple, red, green, orange */}
           <div className="service-box blue">
             <div className="d-flex row">

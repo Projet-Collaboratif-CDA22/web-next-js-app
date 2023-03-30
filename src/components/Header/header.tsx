@@ -13,69 +13,69 @@ function Header() {
           <nav id="navbar" className="navbar">
             <ul>
               <li className="dropdown">
-                <a href="#">
+                <a href="src/components/Header#">
                   <span>Modération</span> <i className="bi bi-chevron-down"></i>
                 </a>
                 <ul>
                   <li>
-                    <a href="#">a 1</a>
+                    <a href="src/components/Header#">a 1</a>
                   </li>
                   <li className="dropdown">
-                    <a href="#">
+                    <a href="src/components/Header#">
                       <span>Administration</span>{" "}
                       <i className="bi bi-chevron-right"></i>
                     </a>
                     <ul>
                       <li>
-                        <a href="#">admin 1</a>
+                        <a href="src/components/Header#">admin 1</a>
                       </li>
                       <li>
-                        <a href="#">admin 2</a>
+                        <a href="src/components/Header#">admin 2</a>
                       </li>
                       <li>
-                        <a href="#">admin 3</a>
+                        <a href="src/components/Header#">admin 3</a>
                       </li>
                       <li>
-                        <a href="#">admin 4</a>
+                        <a href="src/components/Header#">admin 4</a>
                       </li>
                       <li>
-                        <a href="#">admin 5</a>
+                        <a href="src/components/Header#">admin 5</a>
                       </li>
                     </ul>
                   </li>
                   <li>
-                    <a href="#">a . b . 2</a>
+                    <a href="src/components/Header#">a . b . 2</a>
                   </li>
                   <li>
-                    <a href="#">a . b . 3</a>
+                    <a href="src/components/Header#">a . b . 3</a>
                   </li>
                   <li>
-                    <a href="#">a . b . 4</a>
+                    <a href="src/components/Header#">a . b . 4</a>
                   </li>
                 </ul>
               </li>
               <li>
-                <a className="nav-link scrollto" href="#a">
+                <a className="nav-link scrollto" href="src/components/Header#a">
                   a 1
                 </a>
               </li>
               <li>
-                <a className="nav-link scrollto" href="#b">
+                <a className="nav-link scrollto" href="src/components/Header#b">
                   a 2
                 </a>
               </li>
               <li>
-                <a className="nav-link scrollto" href="#c">
+                <a className="nav-link scrollto" href="src/components/Header#c">
                   a 3
                 </a>
               </li>
               <li>
-                <a className="nav-link scrollto" href="#d">
+                <a className="nav-link scrollto" href="src/components/Header#d">
                   a 4
                 </a>
               </li>
               <li>
-                <a className="nav-link scrollto" href="#">
+                <a className="nav-link scrollto" href="src/components/Header#">
                   a 5
                 </a>
               </li>
