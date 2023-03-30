@@ -1,6 +1,4 @@
 import Head from "next/head";
-import Image from "next/image";
-import styles from "@/styles/Home.module.css";
 import Grid from "../../components/Grid/grid";
 import Header from "../../components/Header/header";
 import Hero from "../../components/Hero/hero";
@@ -14,26 +12,23 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/logo_temp.png" />
       </Head>
-      <body>
-        <Header />
-        <Hero />
-        <main className="">
-          <section id="services" className="services">
-            <div className="container">
-              <div className="section-header">
-                <h2>Services</h2>
-                <p>Toutes les offres disponibles</p>
-              </div>
-
-              <div className="row gy-4">
-                <Grid />
-                <Grid />
-              </div>
+      <Header />
+      <Hero />
+      <main className="">
+        <section id="services" className="services">
+          <div className="container">
+            <div className="section-header">
+              <h2>Services</h2>
+              <p>Toutes les offres disponibles</p>
             </div>
-          </section>
-        </main>
-        <footer></footer>
-      </body>
+            <div className="row gy-4">
+              <Grid />
+              <Grid />
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer></footer>
     </>
   );
 }
