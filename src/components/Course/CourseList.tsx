@@ -1,9 +1,11 @@
-import { useState } from "react";
 import CourseElement from "@/components/Course/CourseElement";
-import Header from "@/components/Header/header";
+import type { Course } from "@/pages/api/courses";
+import { getCourses } from "@/pages/api/courses";
 
-export default function CourseList() {
-  const [courses, setCourses] = useState([]);
+type CoursesListProps = {
+  courses: Course[];
+};
+export default function CourseList({ courses }: CoursesListProps) {
   //TODO Fetch courses & map -> CourseElement (add props)
   return (
     <>
@@ -19,4 +21,14 @@ export default function CourseList() {
       </div>
     </>
   );
+}
+
+export async function getServerSideProps() {
+  let errors = null;
+  const courses = await getCourses();
+  return {
+    props: {
+      courses,
+    }, // will be passed to the page component as props
+  };
 }
