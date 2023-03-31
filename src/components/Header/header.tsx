@@ -75,10 +75,21 @@ function Header() {
                   a 4
                 </a>
               </li>
-              <li>
-                <a className="nav-link scrollto" href="src/components/Header#">
-                  a 5
+              <li className="dropdown">
+                <a href="src/components/Header#">
+                  <span>Compte</span> <i className="bi bi-chevron-right"></i>
                 </a>
+                <ul>
+                  <li>
+                    <Link href="/signin">S&apos;inscrire</Link>
+                  </li>
+                  <li>
+                    <Link href="/login">Se connecter</Link>
+                  </li>
+                  <li>
+                    <Link href="/logout">Se déconnecter</Link>
+                  </li>
+                </ul>
               </li>
             </ul>
             <i className="bi bi-list mobile-nav-toggle"></i>
