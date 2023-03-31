@@ -2,6 +2,7 @@ import Head from "next/head";
 import Grid from "@/components/Grid/grid";
 import Hero from "@/components/Hero/hero";
 import Header from "@/components/Header/header";
+import CourseList from "@/components/Course/CourseList";
 
 export default function Home() {
   return (
@@ -21,10 +22,7 @@ export default function Home() {
               <h2>Services</h2>
               <p>Toutes les offres disponibles</p>
             </div>
-            <div className="row gy-4">
-              <Grid />
-              <Grid />
-            </div>
+            <CourseList courses={[]} />
           </div>
         </section>
       </main>
