@@ -32,7 +32,13 @@ function Header() {
                         <li><a className="nav-link scrollto" href="#b">a 2</a></li>
                         <li><a className="nav-link scrollto" href="#c">a 3</a></li>
                         <li><a className="nav-link scrollto" href="#d">a 4</a></li>
-                        <li><a className="nav-link scrollto" href="#">a 5</a></li>
+                        <li className="dropdown"><a href="#"><span>Compte</span> <i className="bi bi-chevron-right"></i></a>
+                            <ul>
+                                <li><a href="/login">Se connecter</a></li>
+                                <li><a href="/signin">S&apos;inscrire</a></li>
+                                <li><a href="/logout">Se déconnecter</a></li>
+                            </ul>
+                        </li>
                     </ul>
                     <i className="bi bi-list mobile-nav-toggle"></i>
                 </nav>
