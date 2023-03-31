@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 function Header() {
   return (
@@ -18,7 +19,7 @@ function Header() {
                 </a>
                 <ul>
                   <li>
-                    <a href="src/components/Header#">a 1</a>
+                    <Link href="/courses">Tous les cours</Link>
                   </li>
                   <li className="dropdown">
                     <a href="src/components/Header#">
