@@ -8,7 +8,7 @@ function Header() {
           <div className="row">
             <div className="col-lg-6 d-flex flex-column justify-content-center">
               <h1 data-aos="fade-up">
-                Nous offrons une opportunité d &apos améliorer vos champs de
+                Nous offrons une opportunité d&apos; améliorer vos champs de
                 compétences.
               </h1>
               <h2 data-aos="fade-up" data-aos-delay="400">
