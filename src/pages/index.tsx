@@ -1,9 +1,7 @@
 import Head from "next/head";
-import Image from "next/image";
-import styles from "@/styles/Home.module.css";
-import Grid from "../../components/Grid/grid";
-import Header from "../../components/Header/header";
-import Hero from "../../components/Hero/hero";
+import Grid from "@/components/Grid/grid";
+import Hero from "@/components/Hero/hero";
+import Header from "@/components/Header/header";
 
 export default function Home() {
   return (
