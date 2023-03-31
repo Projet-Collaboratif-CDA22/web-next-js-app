@@ -14,26 +14,23 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/logo_temp.png" />
       </Head>
-      <body>
-        <Header />
-        <Hero />
-        <main className="">
-          <section id="services" className="services">
-            <div className="container">
-              <div className="section-header">
-                <h2>Services</h2>
-                <p>Toutes les offres disponibles</p>
-              </div>
-
-              <div className="row gy-4">
-                <Grid />
-                <Grid />
-              </div>
+      <Header />
+      <Hero />
+      <main className="">
+        <section id="services" className="services">
+          <div className="container">
+            <div className="section-header">
+              <h2>Services</h2>
+              <p>Toutes les offres disponibles</p>
             </div>
-          </section>
-        </main>
-        <footer></footer>
-      </body>
+            <div className="row gy-4">
+              <Grid />
+              <Grid />
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer></footer>
     </>
   );
 }
