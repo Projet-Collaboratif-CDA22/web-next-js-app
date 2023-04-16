@@ -6,10 +6,10 @@ function Header() {
     <>
       <header id="header" className="header bg-white fixed-top">
         <div className="container-fluid container-xl d-flex align-items-center justify-content-between">
-          <a href="index.html" className="logo d-flex align-items-center">
+          <Link href="/" className="logo d-flex align-items-center">
             <Image src="/logo_temp.png" alt="Logo" width={35} height={35} />
             <span>CESI Match</span>
-          </a>
+          </Link>
 
           <nav id="navbar" className="navbar">
             <ul>
@@ -76,15 +76,15 @@ function Header() {
                 </a>
               </li>
               <li className="dropdown">
-                <a href="src/components/Header#">
+                <Link href="/">
                   <span>Compte</span> <i className="bi bi-chevron-right"></i>
-                </a>
+                </Link>
                 <ul>
                   <li>
-                    <Link href="/signin">S&apos;inscrire</Link>
+                    <Link href="/connect">S&apos;inscrire</Link>
                   </li>
                   <li>
-                    <Link href="/login">Se connecter</Link>
+                    <Link href="/connect">Se connecter</Link>
                   </li>
                   <li>
                     <Link href="/logout">Se déconnecter</Link>

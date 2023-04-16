@@ -1,11 +1,18 @@
-export default function Login() {
+import React from "react";
+
+export default function LoginSubmit() {
+  function LoginSubmit() {
+    alert("submit");
+  }
+
+  // @ts-ignore
   return (
     <div className="container">
       <div className="row">
         <div className="col-md-6 mx-auto">
           <div className="my-5">
             <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
-            <form>
+            <form onSubmit={() => LoginSubmit()}>
               <div className="form-group">
                 <label htmlFor="email">Email</label>
                 <input

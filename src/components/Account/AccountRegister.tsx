@@ -1,11 +1,15 @@
 export default function Register() {
+  function RegisterSubmit() {
+    alert("submit");
+  }
+
   return (
     <div className="container">
       <div className="row">
         <div className="col-md-6 mx-auto">
           <div className="my-5">
             <h1 className="h3 mb-3 font-weight-normal">Please sign up</h1>
-            <form>
+            <form onSubmit={() => RegisterSubmit()}>
               <div className="form-group">
                 <label htmlFor="username">Nom d&apos;utilisateur</label>
                 <input
