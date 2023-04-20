@@ -5,7 +5,6 @@ export default function LoginSubmit() {
     alert("submit");
   }
 
-  // @ts-ignore
   return (
     <div className="container">
       <div className="row">

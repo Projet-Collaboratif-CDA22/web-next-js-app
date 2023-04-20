@@ -1,11 +1,6 @@
 function isLogout() {
   try {
-    const token = localStorage.getItem("token");
-    if (token) {
-      localStorage.removeItem("token");
-      return "Le compte à bien été déconnecté.";
-    }
-    return "Aucun compte à été reconnu pour la déconnexion.";
+    return "Le compte à bien été déconnecté.";
   } catch (error) {
     return "Une erreur à été rencontré lors de la déconnexion.";
   }
