@@ -18,6 +18,7 @@ export default function Register() {
                   id="username"
                   aria-describedby="usernameHelp"
                   placeholder="Entrer votre pseudo"
+                  autoComplete="username"
                 />
                 <small id="usernameHelp" className="form-text text-muted">
                   Le nom d&apos;utilisateur sera affiché à la vue de tous
@@ -30,6 +31,7 @@ export default function Register() {
                   className="form-control"
                   id="lastname"
                   placeholder="Entrer votre pseudo"
+                  autoComplete="lastname"
                 />
               </div>
               <div className="form-group">
@@ -39,28 +41,41 @@ export default function Register() {
                   className="form-control"
                   id="firstname"
                   placeholder="Entrer votre pseudo"
+                  autoComplete="firstname"
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="email">Email</label>
+                <label htmlFor="registerEmail">Email</label>
                 <input
                   type="email"
                   className="form-control"
-                  id="email"
+                  id="registerEmail"
                   aria-describedby="emailHelp"
                   placeholder="Entrer votre email"
+                  autoComplete="email"
                 />
                 <small id="emailHelp" className="form-text text-muted">
                   L&apos;email sera utilisé pour s&apos;identifier
                 </small>
               </div>
               <div className="form-group">
-                <label htmlFor="password">Password</label>
+                <label htmlFor="registerPassword">Password</label>
                 <input
                   type="password"
                   className="form-control"
-                  id="password"
+                  id="registerPassword"
                   placeholder="Entrer votre mot de passe"
+                  autoComplete="new-password"
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="registerPasswordConfirm">Password confirmation </label>
+                <input
+                    type="password"
+                    className="form-control"
+                    id="registerPasswordConfirm"
+                    placeholder="Entrer votre mot de passe"
+                    autoComplete="new-password"
                 />
               </div>
               <button type="submit" className="btn btn-primary">

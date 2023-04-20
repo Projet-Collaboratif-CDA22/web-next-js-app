@@ -13,25 +13,27 @@ export default function LoginSubmit() {
             <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
             <form onSubmit={() => LoginSubmit()}>
               <div className="form-group">
-                <label htmlFor="email">Email</label>
+                <label htmlFor="loginEmail">Email</label>
                 <input
                   type="email"
                   className="form-control"
-                  id="email"
+                  id="loginEmail"
                   aria-describedby="emailHelp"
                   placeholder="Entrer votre email"
+                  autoComplete="email"
                 />
                 <small id="emailHelp" className="form-text text-muted">
                   Nécessite une inscription au préalable
                 </small>
               </div>
               <div className="form-group">
-                <label htmlFor="password">Password</label>
+                <label htmlFor="loginPassword">Password</label>
                 <input
                   type="password"
                   className="form-control"
-                  id="password"
+                  id="loginPassword"
                   placeholder="Entrer votre mot de passe"
+                  autoComplete="current-password"
                 />
               </div>
               <button type="submit" className="btn btn-primary">
