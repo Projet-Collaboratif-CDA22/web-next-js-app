@@ -36,7 +36,6 @@ export default function LoginSubmit() {
   useEffect(() => {
     if (isValidated) {
       //TODO Login the user with email and password through API
-
     }
   }, [isValidated]);
   return (
