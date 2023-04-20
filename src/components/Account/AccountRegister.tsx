@@ -69,13 +69,15 @@ export default function Register() {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="registerPasswordConfirm">Password confirmation </label>
+                <label htmlFor="registerPasswordConfirm">
+                  Password confirmation{" "}
+                </label>
                 <input
-                    type="password"
-                    className="form-control"
-                    id="registerPasswordConfirm"
-                    placeholder="Entrer votre mot de passe"
-                    autoComplete="new-password"
+                  type="password"
+                  className="form-control"
+                  id="registerPasswordConfirm"
+                  placeholder="Entrer votre mot de passe"
+                  autoComplete="new-password"
                 />
               </div>
               <button type="submit" className="btn btn-primary">
