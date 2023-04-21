@@ -17,14 +17,6 @@ export default function Register() {
     } else {
       setValidated(true);
     }
-    console.log(
-      userName,
-      firstName,
-      lastName,
-      email,
-      passwordFirst,
-      passwordSecond
-    );
   };
   useEffect(() => {
     if (isValidated) {

@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
-import getDocumentElement from "@popperjs/core/lib/dom-utils/getDocumentElement";
-import Link from "next/link";
 
 export default function LoginSubmit() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isValidated, setValidated] = useState(false);
+
   const validateForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (email === "") {
