@@ -1,7 +1,7 @@
 import AccountLogin from "@/components/Account/AccountLogin";
 import AccountRegister from "@/components/Account/AccountRegister";
-
 export default function Connect() {
+
   return (
     <div className="container">
       <div className="row">

@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import {useEffect, useMemo, useState} from "react";
+import {login, register} from "@/services/auth/authenticator";
 
 export default function Register() {
   const [userName, setUsername] = useState("");
@@ -8,6 +9,7 @@ export default function Register() {
   const [passwordFirst, setPasswordFirst] = useState("");
   const [passwordSecond, setPasswordSecond] = useState("");
   const [isValidated, setValidated] = useState(false);
+  const [data, setData] = useState(null)
   const validateForm = (e: { preventDefault: () => void }) => {
     //Todo add validation
     e.preventDefault();
@@ -20,9 +22,17 @@ export default function Register() {
   };
   useEffect(() => {
     if (isValidated) {
-      //todo: register the user
+      register(email, passwordFirst).then(
+          (data)=>{
+            setData(data)
+            alert('User registered !')
+          }
+      )
     }
-  }, [isValidated]);
+  }, [email, isValidated, passwordFirst]);
+
+
+
   return (
     <div className="container">
       <div className="row">

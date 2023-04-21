@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import {login} from "@/services/auth/authenticator";
 
 export default function LoginSubmit() {
   const [email, setEmail] = useState("");
@@ -19,7 +20,7 @@ export default function LoginSubmit() {
       alert("Veuillez renseigner un email valide");
       setValidated(false);
     }
-    if (password.length < 8) {
+    if (password.length < 5) {
       alert("Votre mot de passe doit faire au moins 8 charactères");
       setValidated(false);
     }
@@ -27,14 +28,16 @@ export default function LoginSubmit() {
       email !== "" &&
       password !== "" &&
       email.includes("@") &&
-      password.length > 8
+      password.length > 5
     ) {
       setValidated(true);
     }
   };
   useEffect(() => {
     if (isValidated) {
-      //TODO Login the user with email and password through API
+      login(email, password).then((user)=>{
+        console.log(user)
+      })
     }
   }, [isValidated]);
   return (
