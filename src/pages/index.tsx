@@ -4,8 +4,6 @@ import Header from "@/components/Header/header";
 import CourseList from "@/components/Course/CourseList";
 
 export default function Home() {
-
-
   return (
     <>
       <Head>
