@@ -5,10 +5,10 @@ export async function register(email: string, password: string) {
     email: email,
     password: password,
     options: {
-      data: {
-        first_name: "John",
-        age: 27,
-      },
+      //data: {
+      //first_name: "John",
+      //   age: 27,
+      //  },
     },
   });
   return error ?? data;

@@ -81,10 +81,10 @@ function Header() {
                 </Link>
                 <ul>
                   <li>
-                    <Link href="/connect">S&apos;inscrire</Link>
+                    <Link href="/profile">S&apos;inscrire</Link>
                   </li>
                   <li>
-                    <Link href="/connect">Se connecter</Link>
+                    <Link href="/profile">Se connecter</Link>
                   </li>
                   <li>
                     <Link href="/logout">Se déconnecter</Link>

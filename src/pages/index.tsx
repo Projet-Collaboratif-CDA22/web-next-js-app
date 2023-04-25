@@ -1,9 +1,11 @@
 import Head from "next/head";
-import Grid from "@/components/Grid/grid";
 import Hero from "@/components/Hero/hero";
 import Header from "@/components/Header/header";
 import CourseList from "@/components/Course/CourseList";
+
 export default function Home() {
+
+
   return (
     <>
       <Head>
