@@ -6,6 +6,7 @@ import {
 } from "@supabase/auth-helpers-react";
 import { Database } from "@/types/supabase";
 import LogoutButton from "@/components/Buttons/LogoutButton";
+import Avatar from "@/components/Account/Avatar";
 
 type Profiles = Database["public"]["Tables"]["profiles"]["Row"];
 
@@ -13,7 +14,8 @@ export default function Account({ session }: { session: Session }) {
   const supabase = useSupabaseClient<Database>();
   const user = useUser();
   const [username, setUsername] = useState<Profiles["username"]>(null);
-
+const [full_name, setFullName] = useState<Profiles["full_name"]>(null);
+const [avatar_url, setAvatarUrl] = useState<Profiles["avatar_url"]>(null);
   useEffect(() => {
     getProfile();
   }, [session]);
@@ -75,7 +77,18 @@ export default function Account({ session }: { session: Session }) {
           onChange={(e) => setUsername(e.target.value)}
         />
       </div>
-
+      <div>
+        <label htmlFor="username">Full name</label>
+        <input
+            id="username"
+            type="text"
+            value={full_name || ""}
+            onChange={(e) => setFullName(e.target.value)}
+        />
+      </div>
+     <Avatar uid={user?.id??""} url={avatar_url} size={150} onUpload={(url)=>{
+            setAvatarUrl(url)
+     }}/>
       <div>
         <button
           className="button primary block"
