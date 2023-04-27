@@ -14,8 +14,8 @@ export default function Account({ session }: { session: Session }) {
   const supabase = useSupabaseClient<Database>();
   const user = useUser();
   const [username, setUsername] = useState<Profiles["username"]>(null);
-const [full_name, setFullName] = useState<Profiles["full_name"]>(null);
-const [avatar_url, setAvatarUrl] = useState<Profiles["avatar_url"]>(null);
+  const [full_name, setFullName] = useState<Profiles["full_name"]>(null);
+  const [avatar_url, setAvatarUrl] = useState<Profiles["avatar_url"]>(null);
   useEffect(() => {
     getProfile();
   }, [session]);
@@ -45,8 +45,8 @@ const [avatar_url, setAvatarUrl] = useState<Profiles["avatar_url"]>(null);
         id: user?.id ?? "",
         username: username,
         updated_at: new Date().toDateString(),
-        full_name: "",
-        avatar_url: "",
+        full_name: full_name,
+        avatar_url: avatar_url,
         website: "",
       };
 
@@ -80,15 +80,20 @@ const [avatar_url, setAvatarUrl] = useState<Profiles["avatar_url"]>(null);
       <div>
         <label htmlFor="username">Full name</label>
         <input
-            id="username"
-            type="text"
-            value={full_name || ""}
-            onChange={(e) => setFullName(e.target.value)}
+          id="username"
+          type="text"
+          value={full_name || ""}
+          onChange={(e) => setFullName(e.target.value)}
         />
       </div>
-     <Avatar uid={user?.id??""} url={avatar_url} size={150} onUpload={(url)=>{
-            setAvatarUrl(url)
-     }}/>
+      <Avatar
+        uid={user?.id ?? ""}
+        url={avatar_url}
+        size={150}
+        onUpload={(url) => {
+          setAvatarUrl(url);
+        }}
+      />
       <div>
         <button
           className="button primary block"
@@ -100,7 +105,6 @@ const [avatar_url, setAvatarUrl] = useState<Profiles["avatar_url"]>(null);
           Update
         </button>
       </div>
-
       <div>
         <LogoutButton />
       </div>
