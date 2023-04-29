@@ -2,38 +2,48 @@ import CourseElement from "@/components/Course/CourseElement";
 import type { Course } from "@/pages/api/courses";
 import { getCourses } from "@/pages/api/courses";
 import Grid from "@/components/Grid/grid";
+import { useEffect, useState } from "react";
+import {
+  CoursesReponseError,
+  CoursesResponseSuccess,
+  getAllCourses,
+} from "@/services/courses/courses.service";
 
 type CoursesListProps = {
   courses: Course[];
 };
-export default function CourseList({ courses }: CoursesListProps) {
-  //TODO Fetch courses & map -> CourseElement (add props)
+export default function CourseList() {
+  const [courses, setCourses] = useState<CoursesResponseSuccess>(null);
+  const [fetchError, setFetchError] = useState<CoursesReponseError>(null);
+
+  useEffect(() => {
+    const fetchCourses = async () => {
+      const { data, error } = await getAllCourses();
+      if (error) {
+        setFetchError(error);
+        setCourses([]);
+      } else {
+        setFetchError(null);
+        setCourses(data);
+      }
+    };
+    fetchCourses();
+  }, []);
+
   return (
     <>
       <div className="row gy-4">
         <section className="services">
           <div className={"container"}>
-            <CourseElement
-              content={"bonjour"}
-              title={"Titre 1"}
-              date={new Date("01/01/2023")}
-              color={"red"}
-              key={1}
-            />
-            <CourseElement
-              content={"Au revoir"}
-              title={"Titre 2"}
-              date={new Date("01/01/2023")}
-              key={2}
-              color={"blue"}
-            />
-            <CourseElement
-              content={"Au revoir"}
-              title={"Titre 2"}
-              date={new Date("01/01/2023")}
-              key={2}
-              color={"green"}
-            />
+            {courses?.map((course, index) => (
+              <CourseElement
+                key={index}
+                title={course.title!}
+                content={course.author!}
+                color="red"
+                date={new Date(course.created_at!)}
+              />
+            ))}
             <Grid />
           </div>
         </section>
