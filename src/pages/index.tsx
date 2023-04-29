@@ -21,7 +21,7 @@ export default function Home() {
               <h2>Services</h2>
               <p>Toutes les offres disponibles</p>
             </div>
-            <CourseList courses={[]} />
+            <CourseList />
           </div>
         </section>
       </main>
