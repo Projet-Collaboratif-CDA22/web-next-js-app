@@ -1,4 +1,4 @@
-export type Json =
+﻿export type Json =
   | string
   | number
   | boolean
@@ -65,7 +65,7 @@ export interface Database {
           is_validated: boolean;
           picture_url: string | null;
           place_available: number;
-          tags: Json | null;
+          tags: string[] | null;
           time_slot: string | null;
           title: string | null;
         };
@@ -81,7 +81,7 @@ export interface Database {
           is_validated?: boolean;
           picture_url?: string | null;
           place_available?: number;
-          tags?: Json | null;
+          tags?: string[] | null;
           time_slot?: string | null;
           title?: string | null;
         };
@@ -97,7 +97,7 @@ export interface Database {
           is_validated?: boolean;
           picture_url?: string | null;
           place_available?: number;
-          tags?: Json | null;
+          tags?: string[] | null;
           time_slot?: string | null;
           title?: string | null;
         };
