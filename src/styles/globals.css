@@ -168,6 +168,7 @@ section {
   transition: all 0.5s;
   z-index: 997;
   padding: 20px 0;
+  position: relative;
 }
 
 .header.header-scrolled {
@@ -784,7 +785,7 @@ section {
 .services .service-box {
   box-shadow: 0px 0 30px rgba(1, 41, 112, 0.08);
   height: 100%;
-  padding: 60px 30px;
+  padding: 20px 20px;
   text-align: center;
   transition: 0.3s;
   border-radius: 5px;

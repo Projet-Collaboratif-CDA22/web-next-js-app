@@ -1,4 +1,4 @@
-export type Json =
+﻿export type Json =
   | string
   | number
   | boolean
@@ -26,7 +26,7 @@ export interface Database {
           title?: string;
         };
       };
-      "comment ": {
+      comment: {
         Row: {
           course_id: number;
           created_at: string | null;
@@ -65,7 +65,7 @@ export interface Database {
           is_validated: boolean;
           picture_url: string | null;
           place_available: number;
-          tags: Json | null;
+          tags: string[] | null;
           time_slot: string | null;
           title: string | null;
         };
@@ -81,7 +81,7 @@ export interface Database {
           is_validated?: boolean;
           picture_url?: string | null;
           place_available?: number;
-          tags?: Json | null;
+          tags?: string[] | null;
           time_slot?: string | null;
           title?: string | null;
         };
@@ -97,7 +97,7 @@ export interface Database {
           is_validated?: boolean;
           picture_url?: string | null;
           place_available?: number;
-          tags?: Json | null;
+          tags?: string[] | null;
           time_slot?: string | null;
           title?: string | null;
         };
@@ -107,6 +107,7 @@ export interface Database {
           avatar_url: string | null;
           full_name: string | null;
           id: string;
+          role: string[];
           updated_at: string | null;
           username: string | null;
           website: string | null;
@@ -115,6 +116,7 @@ export interface Database {
           avatar_url?: string | null;
           full_name?: string | null;
           id: string;
+          role?: string[];
           updated_at?: string | null;
           username?: string | null;
           website?: string | null;
@@ -123,6 +125,7 @@ export interface Database {
           avatar_url?: string | null;
           full_name?: string | null;
           id?: string;
+          role?: string[];
           updated_at?: string | null;
           username?: string | null;
           website?: string | null;
@@ -133,7 +136,19 @@ export interface Database {
       [_ in never]: never;
     };
     Functions: {
-      [_ in never]: never;
+      delete_avatar: {
+        Args: {
+          avatar_url: string;
+        };
+        Returns: Record<string, unknown>;
+      };
+      delete_storage_object: {
+        Args: {
+          bucket: string;
+          object: string;
+        };
+        Returns: Record<string, unknown>;
+      };
     };
     Enums: {
       [_ in never]: never;
