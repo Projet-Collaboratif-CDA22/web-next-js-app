@@ -6,7 +6,7 @@ export default function CourseElement({ course }: { course: Course }) {
   return (
     <>
       <div className="col-lg-12 col-md-12 mb-5">
-        <Link href="#">
+        <Link href={"/course/" + course.id} key={course.id}>
           <div className={`service-box red`}>
             <div className="d-flex row">
               <div className="col-lg-3">
