@@ -33,7 +33,6 @@ export default function CourseList() {
             {courses?.map((course, index) => (
               <CourseElement course={course} key={index} />
             ))}
-            <Grid />
           </div>
         </section>
       </div>
