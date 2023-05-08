@@ -112,9 +112,7 @@ export default function Account({ session }: { session: Session }) {
       <div>
         <LogoutButton />
       </div>
-      <div>
-        Role : {roles.map((role) => role)}
-      </div>
+      <div>Role : {roles.map((role) => role)}</div>
     </div>
   );
 }
