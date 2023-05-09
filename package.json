@@ -19,6 +19,8 @@
     "component:headless": "cypress run --component"
   },
   "dependencies": {
+    "@hookform/error-message": "^2.0.1",
+    "@hookform/resolvers": "^3.1.0",
     "@next/font": "13.1.6",
     "@supabase/auth-helpers-nextjs": "^0.6.1",
     "@supabase/auth-helpers-react": "^0.3.1",
@@ -35,7 +37,9 @@
     "react": "18.2.0",
     "react-bootstrap": "^2.7.2",
     "react-dom": "18.2.0",
+    "react-hook-form": "^7.43.9",
     "typescript": "4.9.5",
+    "yup": "^1.1.1",
     "zustand": "^4.3.6"
   },
   "devDependencies": {
