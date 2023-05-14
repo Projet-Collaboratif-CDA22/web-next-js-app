@@ -17,6 +17,7 @@ export default function Account({ session }: { session: Session }) {
   const [full_name, setFullName] = useState<Profiles["full_name"]>(null);
   const [avatar_url, setAvatarUrl] = useState<Profiles["avatar_url"]>(null);
   const [roles, setRoles] = useState<Profiles["role"]>([]);
+
   useEffect(() => {
     getProfile();
   }, [session]);

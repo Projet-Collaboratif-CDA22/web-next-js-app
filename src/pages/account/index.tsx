@@ -1,52 +1,59 @@
-export default function Home() {
-  const messageConnection = "Se connecter";
-  const messageInscription = "S'inscrire";
+import { Auth } from "@supabase/auth-ui-react";
+import { ThemeSupa } from "@supabase/auth-ui-shared";
+import { useSession, useSupabaseClient } from "@supabase/auth-helpers-react";
+import Account from "@/components/Account/AccountProfile";
+
+const Home = () => {
+  const session = useSession();
+  const supabase = useSupabaseClient();
+
   return (
-    <>
-      <div
-        className="m-5 p-4"
-        style={{
-          display: "flex;",
-          justifyContent: "center",
-          gap: "16rem",
-          flexWrap: "wrap",
-        }}
-      >
-        <div
-          className="card border-dark mb-3 p-4"
-          style={{ maxWidth: "20rem;" }}
-        >
-          <div className="card-header">
-            <h2>{messageConnection}</h2>
-          </div>
-          <div className="card-body">
-            <h4 className="card-title">Dark card title</h4>
-            <p className="card-text">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque
-              quam explicabo aliquid molestiae tempore quod laboriosam tenetur
-              optio aliquam deserunt iusto voluptatibus, doloribus error, sunt
-              possimus quo exercitationem libero! Dicta?
-            </p>
-          </div>
-        </div>
-        <div
-          className="card border-light mb-3 p-4 "
-          style={{ maxWidth: "20rem;" }}
-        >
-          <div className="card-header ">
-            <h2>{messageInscription}</h2>
-          </div>
-          <div className="card-body">
-            <h4 className="card-title">Light card title</h4>
-            <p className="card-text">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam,
-              laudantium aspernatur, facilis doloremque repudiandae quibusdam
-              culpa, repellat nesciunt reiciendis ipsum est placeat tenetur
-              commodi. Alias consequatur atque quia eos expedita.
-            </p>
-          </div>
-        </div>
-      </div>
-    </>
+    <div className="container" style={{ padding: "50px 0 100px 0" }}>
+      {!session ? (
+        <Auth
+          supabaseClient={supabase}
+          appearance={{ theme: ThemeSupa }}
+          theme="white"
+          providers={[]}
+          localization={{
+            variables: {
+              sign_in: {
+                email_label: "Adresse E-mail",
+                password_label: "Mot de passe",
+                email_input_placeholder: "Entrez votre adresse e-mail",
+                password_input_placeholder: "Entrez votre mot de passe fort",
+                button_label: "Se connecter",
+                link_text: "Déja un compte ? Se connecter !",
+                loading_button_label: "Connexion en cours ...",
+              },
+              sign_up: {
+                email_label: "Adresse E-mail",
+                password_label: "Mot de passe",
+                email_input_placeholder: "Entrez votre adresse e-mail",
+                password_input_placeholder: "Entrez votre mot de passe fort",
+                button_label: `S'inscrire`,
+                link_text: "Pas encore de compte ? En créer un !",
+                loading_button_label: "Inscription en cours ...",
+              },
+              forgotten_password: {
+                email_label: "Adresse E-mail",
+                password_label: "Mot de passe",
+                email_input_placeholder: "Entrez votre adresse e-mail",
+                button_label:
+                  "Envoyer les instructions de réinitialisation du mot de passe",
+                loading_button_label: "Envoi des instructions ...",
+                link_text: "Mot de passe oublié ?",
+                confirmation_text:
+                  "Vérifiez vos emails pour réinitialiser votre mot de passe",
+              },
+            },
+          }}
+        />
+      ) : (
+        <Account session={session} />
+      )}
+    </div>
   );
-}
+};
+
+export default Home;

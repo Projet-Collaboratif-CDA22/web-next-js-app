@@ -1,53 +1,41 @@
+import { useSession, useSupabaseClient } from "@supabase/auth-helpers-react";
 import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useState } from "react";
+import { Container, Nav, NavDropdown, Navbar } from "react-bootstrap";
 
 function Header() {
+  const session = useSession();
+  const supabase = useSupabaseClient();
+
   const [message, setMessage] = useState<string>("");
-  const [isConnected, setIsConnected] = useState<boolean>(false);
+  const [isConnected, setIsConnected] = useState<boolean>();
 
   useEffect(() => {
-    if (isConnected) {
+    if (session) {
+      setIsConnected(true);
       setMessage("Mon compte");
     } else {
+      setIsConnected(false);
       setMessage("Connexion");
     }
-  }, [isConnected]);
+  }, [session]);
 
   function fakeConnectionBehaviour() {
-    setIsConnected(!isConnected);
+    // setIsConnected(!isConnected);
   }
 
-  const menuCompte = [
-    {
-      title: "Mon profil",
-      route: "/profile",
-    },
-    {
-      title: "Mes cours",
-      route: "/courses",
-    },
-    {
-      title: "Me déconnecter",
-      route: "/logout",
-    },
-  ];
-  const menuConnexion = [
-    {
-      title: "Se connecter",
-      route: "/login",
-    },
-    {
-      title: "S'inscrire",
-      route: "/register",
-    },
-  ];
-
+  function handleLogout() {
+    if (session) {
+      supabase.auth.signOut();
+    }
+    return;
+  }
+  const messageInscrire: string = "S'inscrire";
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div className="container-fluid">
-          <Link className="navbar-brand" href="#">
+      <Navbar bg="primary" variant="dark">
+        <Container>
+          <Navbar.Brand href="/">
             <Image
               src="/logo_temp.png"
               alt="Logo"
@@ -56,56 +44,70 @@ function Header() {
               className="mx-2"
               style={{}}
             />
-            CESI Match
-          </Link>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarColor02"
-            aria-controls="navbarColor02"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarColor02">
-            <ul className="navbar-nav me-auto">
-              <li className="nav-item">
-                <Link className="nav-link" href="/">
-                  Accueil
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" href="/course">
-                  Cours
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" href="/about">
-                  Infos
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" href="/account">
-                  {message}
-                </Link>
-              </li>
-              <li className="nav-item">
-                <a
-                  className="nav-link"
-                  href="#"
-                  onClick={() => fakeConnectionBehaviour()}
-                >
-                  {"fake" + message}
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+            Cesi Match
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="me-auto">
+              <Nav.Link className="nav-link" href="/">
+                Accueil
+              </Nav.Link>
+              <NavDropdown title="Cours" id="basic-nav-dropdown">
+                <NavDropdown.Item href="/course">
+                  Consulter les cours
+                </NavDropdown.Item>
+                {isConnected && (
+                  <NavDropdown.Item href="/course/add">
+                    Ajouter un cours
+                  </NavDropdown.Item>
+                )}
+              </NavDropdown>
+              <Nav.Link className="nav-link" href="/about">
+                Infos
+              </Nav.Link>
+              <NavDropdown title={message} id="basic-nav-dropdown">
+                <NavDropdown.Item href="/account/user">
+                  Infos session
+                </NavDropdown.Item>
+
+                {isConnected && (
+                  <>
+                    <NavDropdown.Item href="#">Mon profil</NavDropdown.Item>
+                    <NavDropdown.Item href="#">
+                      Mes cours suivis
+                    </NavDropdown.Item>
+                    <NavDropdown.Item href="#">
+                      Mes cours proposés
+                    </NavDropdown.Item>
+                    <NavDropdown.Divider />
+                    <NavDropdown.Item href="/" onClick={() => handleLogout()}>
+                      Me déconnecter
+                    </NavDropdown.Item>
+                  </>
+                )}
+                {!isConnected && (
+                  <>
+                    <NavDropdown.Item href="/account/">
+                      Se connecter
+                    </NavDropdown.Item>
+                    <NavDropdown.Item href="#">
+                      {messageInscrire}
+                    </NavDropdown.Item>
+                  </>
+                )}
+              </NavDropdown>
+              <Nav.Link
+                className="nav-link"
+                href="#"
+                onClick={() => fakeConnectionBehaviour()}
+              >
+                Fake {message}
+              </Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
     </>
   );
 }
-
 export default Header;
