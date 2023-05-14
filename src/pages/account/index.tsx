@@ -1,5 +1,3 @@
-import "./styles.module.css";
-
 export default function Home() {
   const messageConnection = "Se connecter";
   const messageInscription = "S'inscrire";

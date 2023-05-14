@@ -102,6 +102,49 @@ export interface Database {
           title?: string | null;
         };
       };
+      enroll_course: {
+        Row: {
+          course_enrolled: number;
+          created_at: string | null;
+          id: number;
+          is_enrolled: boolean;
+          user_enrolled: string;
+        };
+        Insert: {
+          course_enrolled: number;
+          created_at?: string | null;
+          id?: number;
+          is_enrolled?: boolean;
+          user_enrolled: string;
+        };
+        Update: {
+          course_enrolled?: number;
+          created_at?: string | null;
+          id?: number;
+          is_enrolled?: boolean;
+          user_enrolled?: string;
+        };
+      };
+      favorite_course: {
+        Row: {
+          course: number;
+          created_at: string | null;
+          id: number;
+          user: string;
+        };
+        Insert: {
+          course: number;
+          created_at?: string | null;
+          id?: number;
+          user: string;
+        };
+        Update: {
+          course?: number;
+          created_at?: string | null;
+          id?: number;
+          user?: string;
+        };
+      };
       profiles: {
         Row: {
           avatar_url: string | null;
