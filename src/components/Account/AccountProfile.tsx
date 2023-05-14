@@ -16,6 +16,7 @@ export default function Account({ session }: { session: Session }) {
   const [username, setUsername] = useState<Profiles["username"]>(null);
   const [full_name, setFullName] = useState<Profiles["full_name"]>(null);
   const [avatar_url, setAvatarUrl] = useState<Profiles["avatar_url"]>(null);
+  const [roles, setRoles] = useState<Profiles["role"]>([]);
   useEffect(() => {
     getProfile();
   }, [session]);
@@ -23,7 +24,7 @@ export default function Account({ session }: { session: Session }) {
     try {
       let { data, error, status } = await supabase
         .from("profiles")
-        .select(`username`)
+        .select(`username, full_name, avatar_url, role`)
         .eq("id", user?.id)
         .single();
 
@@ -33,6 +34,9 @@ export default function Account({ session }: { session: Session }) {
 
       if (data) {
         setUsername(data.username);
+        setFullName(data.full_name);
+        setAvatarUrl(data.avatar_url);
+        setRoles(data.role);
       }
     } catch (error: any) {
       alert(error.message);
@@ -108,6 +112,7 @@ export default function Account({ session }: { session: Session }) {
       <div>
         <LogoutButton />
       </div>
+      <div>Role : {roles.map((role) => role)}</div>
     </div>
   );
 }
