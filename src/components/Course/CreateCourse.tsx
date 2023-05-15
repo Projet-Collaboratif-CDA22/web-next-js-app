@@ -1,5 +1,5 @@
 import { SubmitHandler, useForm } from "react-hook-form";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { ErrorMessage } from "@hookform/error-message";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -14,10 +14,11 @@ import {
   Badge,
 } from "react-bootstrap";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
-import { Category } from "@/types/definition";
+import { Category, CourseInsert, CourseLocation } from "@/types/definition";
 import { addCourse } from "@/services/courses/courses.service";
 import { handleCourseInput } from "@/services/courses/form.service";
-import AdresseAutocomplete from "../Location/AdresseAutocomplete";
+import DynamicAddress from "../Location/DynamicAddressAutofil";
+import Router from "next/router";
 
 type Inputs = yup.InferType<typeof CourseSchema>;
 export type { Inputs as CourseInputs };
@@ -29,6 +30,9 @@ export default function CreateCourse({
 }) {
   const [place, setPlace] = useState<number>(1);
   const [duration, setDuration] = useState<number>(15);
+  const [location, setLocation] = useState<CourseLocation>();
+  const [locationValidated, setLocationValidated] = useState<boolean>(false);
+  const [course, setCourse] = useState<CourseInsert>();
 
   const {
     register,
@@ -39,11 +43,39 @@ export default function CreateCourse({
     resolver: yupResolver(CourseSchema),
     mode: "all",
   });
+
+  useEffect(() => {
+    if (location) {
+      setLocationValidated(true);
+    }
+  }, [location]);
+
+  useEffect(() => {
+    const submitCourse = async () => {
+      debugger;
+      console.log("here");
+
+      if (course) {
+        const { data, error } = await addCourse(course);
+        if (data) {
+          alert("Le cours a été créé avec succès");
+          const id: string = data.id.toString();
+          return Router.push("/course/" + id);
+        } else {
+          alert("Une erreur est survenue lors de la création du cours");
+        }
+      }
+    };
+    submitCourse();
+  }, [course, setCourse]);
+
   const onSubmit: SubmitHandler<Inputs> = (data) => {
-    console.table(data);
     debugger;
-    addCourse(handleCourseInput(data));
+    const courseInput = handleCourseInput(data, location!);
+    setCourse(courseInput);
   };
+  console.log(location);
+  console.log(locationValidated);
 
   return (
     <Container>
@@ -60,7 +92,6 @@ export default function CreateCourse({
                 label="Titre du cours"
                 className="mb-3"
               >
-                {/* <Form.Label>Titre du cours</Form.Label> */}
                 <Form.Control
                   type="text"
                   isInvalid={errors.title ? true : false}
@@ -195,9 +226,12 @@ export default function CreateCourse({
             </Form.Group>
           </Col>
         </Row>
+        <Row>
+          <DynamicAddress setLocation={setLocation} location={location} />
+        </Row>
         <Button
           type="submit"
-          disabled={isSubmitting || !isValid}
+          disabled={isSubmitting || !isValid || !locationValidated}
           className="btn btn-dark"
         >
           Ajouter ce cours

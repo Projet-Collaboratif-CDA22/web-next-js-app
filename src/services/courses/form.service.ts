@@ -1,8 +1,9 @@
 import { CourseInputs } from "@/components/Course/CreateCourse";
-import { CourseInsert } from "@/types/definition";
+import { CourseInsert, CourseLocation } from "@/types/definition";
 
 export function handleCourseInput(
-  courseAttributes: CourseInputs
+  courseAttributes: CourseInputs,
+  courseLocation: CourseLocation
 ): CourseInsert {
   const {
     title,
@@ -13,8 +14,6 @@ export function handleCourseInput(
     place_available,
     category,
   } = courseAttributes;
-  debugger;
-  // const { place_name, type, coordinates } = location;
   const time_slot = new Date(`${date} ${time}`).toString();
   console.log(time_slot);
   return {
@@ -24,5 +23,6 @@ export function handleCourseInput(
     time_slot: new Date(`${date} ${time}`).toISOString(),
     place_available,
     categories: category,
+    coordinates: courseLocation,
   };
 }

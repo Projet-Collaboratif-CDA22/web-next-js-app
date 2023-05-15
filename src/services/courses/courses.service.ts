@@ -14,7 +14,7 @@ export async function getCourseById(id: number) {
 }
 
 export async function addCourse(course: CourseInsert) {
-  return await supabase.from("courses").insert(course);
+  return await supabase.from("courses").insert(course).select().single();
 }
 
 type CoursesResponse = Awaited<ReturnType<typeof getAllCourses>>;

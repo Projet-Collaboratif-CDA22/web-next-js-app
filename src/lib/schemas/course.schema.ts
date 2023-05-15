@@ -27,13 +27,6 @@ export const CourseSchema = yup
       .required(errorMessage.req)
       .min(1, "Nombre de place trop faible")
       .max(10, "Nombre de place trop important"),
-    // date: yup
-    //   .date()
-    //   .min(
-    //     new Date(Date.now()),
-    //     "La date doit être supérieure à la date du jour"
-    //   )
-    //   .required("Renseignez une date"),
     date: yup.string().required(errorMessage.req).matches(dateRegex),
     time: yup
       .string()
