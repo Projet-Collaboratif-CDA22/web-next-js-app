@@ -1,30 +1,29 @@
-import { validateHeaderName } from "http";
 import { useEffect, useState } from "react";
 import { Button, Form, Stack } from "react-bootstrap";
 
 export interface InputProps {
   setValue: any;
-  value: string;
+  // value: string;
   message: string;
 }
 
-export default function InputStack({ value, setValue, message }: InputProps) {
+export default function InputStack({ setValue, message }: InputProps) {
   const [valid, setValid] = useState<boolean>(false);
   const [newValue, setNewValue] = useState<string>("");
   const messageError = "Champ invalide";
 
   function setValue_() {
-    console.log("setValue_", newValue);
+    console.log(newValue);
     setValue(newValue);
   }
 
   function checkValue() {
-    console.log("checkValue", value);
-    if (value === "") {
+    console.log(newValue);
+    if (newValue === "") {
       setValid(false);
       return;
     }
-    if (value === undefined) {
+    if (newValue === undefined) {
       setValid(false);
 
       return;
@@ -53,7 +52,6 @@ export default function InputStack({ value, setValue, message }: InputProps) {
           variant="secondary"
           disabled={!valid}
           onClick={() => {
-            // console.log(value);
             setValue_();
           }}
         >

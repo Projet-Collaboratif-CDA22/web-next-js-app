@@ -117,10 +117,7 @@ export default function CreateCourse({
                   type="textarea"
                   isInvalid={errors.description ? true : false}
                   {...register("description")}
-                  onChange={(e) => {
-                    console.log(e.target.value);
-                    console.log(errors.description?.message);
-                  }}
+                  onChange={(e) => {}}
                 />
                 <Form.Control.Feedback type="invalid">
                   {errors.description?.message}
@@ -180,9 +177,7 @@ export default function CreateCourse({
                   type="date"
                   isInvalid={errors.date ? true : false}
                   {...register("date")}
-                  onChange={(e) => {
-                    console.log(e.target.value);
-                  }}
+                  onChange={(e) => {}}
                 ></Form.Control>
                 <Form.Control.Feedback type="invalid">
                   {errors.date?.message}

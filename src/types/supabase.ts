@@ -162,6 +162,7 @@ export interface Database {
           avatar_url: string | null;
           full_name: string | null;
           id: string;
+          is_active: boolean | null;
           role: string;
           updated_at: string | null;
           username: string | null;
@@ -171,6 +172,7 @@ export interface Database {
           avatar_url?: string | null;
           full_name?: string | null;
           id: string;
+          is_active?: boolean | null;
           role?: string;
           updated_at?: string | null;
           username?: string | null;
@@ -180,6 +182,7 @@ export interface Database {
           avatar_url?: string | null;
           full_name?: string | null;
           id?: string;
+          is_active?: boolean | null;
           role?: string;
           updated_at?: string | null;
           username?: string | null;

@@ -1,4 +1,5 @@
 import supabase from "@/lib/config/supabaseClient";
+import { eRole } from "@/types/definition";
 
 export async function getFlaggedCourses() {
   return await supabase
@@ -23,4 +24,16 @@ export async function deleteCategory(id: number) {
 
 export async function createCategory(name: string) {
   return await supabase.from("category").insert([{ title: name }]);
+}
+
+export async function getAllUsers() {
+  return await supabase.from("profiles").select("*");
+}
+
+export async function updateUserRole(id: string, role: eRole) {
+  return await supabase
+    .from("profiles")
+    .update({ role: eRole[role] })
+    .eq("id", id)
+    .single();
 }

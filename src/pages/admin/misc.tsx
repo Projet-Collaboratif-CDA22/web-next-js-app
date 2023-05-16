@@ -5,10 +5,11 @@ import { GetServerSideProps } from "next";
 import { useState } from "react";
 
 export default function Home() {
-// { categories }: { categories: Category[] }
+  // { categories }: { categories: Category[] }
   return (
     <>
-      <div>Statistiques</div>;<CategoryComponent></CategoryComponent>
+      <h1>Divers</h1>
+      <CategoryComponent></CategoryComponent>
     </>
   );
 }

@@ -19,6 +19,8 @@ export type Coordinates = {
 //Category
 export type Category = Database["public"]["Tables"]["category"]["Row"];
 
+export type User = Database["public"]["Tables"]["profiles"]["Row"];
+
 export enum eRole {
   none,
   member,

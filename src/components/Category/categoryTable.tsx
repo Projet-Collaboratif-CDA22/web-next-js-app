@@ -45,7 +45,7 @@ export default function CategoryComponent() {
 
   useEffect(() => {
     const addCategory = async () => {
-      console.log(newCategory);
+      // console.log(newCategory);
       if (newCategory === "") return;
       if (categories.find((category) => category.title === newCategory)) {
         console.log("erreur duplication");
@@ -78,7 +78,7 @@ export default function CategoryComponent() {
         <>
           <InputStack
             message="Ajouter une catégorie"
-            value={newCategory}
+            // value={newCategory}
             setValue={setNewCategory}
           />
           <div>Category component</div>

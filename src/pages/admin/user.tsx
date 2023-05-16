@@ -1,3 +1,5 @@
+import { Container } from "react-bootstrap";
+
 export default function Home() {
-  return <div>User</div>;
+  return <Container fluid="md">User</Container>;
 }
