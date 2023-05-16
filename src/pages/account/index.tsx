@@ -1,6 +1,6 @@
-import {Auth} from "@supabase/auth-ui-react";
-import {ThemeSupa} from "@supabase/auth-ui-shared";
-import {useSession, useSupabaseClient} from "@supabase/auth-helpers-react";
+import { Auth } from "@supabase/auth-ui-react";
+import { ThemeSupa } from "@supabase/auth-ui-shared";
+import { useSession, useSupabaseClient } from "@supabase/auth-helpers-react";
 import Account from "@/components/Account/AccountProfile";
 
 const Home = () => {

@@ -1,6 +1,6 @@
 import Hero from "@/components/Hero/hero";
 import CourseList from "@/components/Course/CourseList";
-import {Button} from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import Router from "next/router";
 
 export default function Home() {

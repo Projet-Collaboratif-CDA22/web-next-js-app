@@ -1,8 +1,8 @@
 import "node_modules/bootswatch/dist/minty/bootstrap.min.css";
-import type {AppProps} from "next/app";
-import {createBrowserSupabaseClient} from "@supabase/auth-helpers-nextjs";
-import {Session, SessionContextProvider} from "@supabase/auth-helpers-react";
-import {useState} from "react";
+import type { AppProps } from "next/app";
+import { createBrowserSupabaseClient } from "@supabase/auth-helpers-nextjs";
+import { Session, SessionContextProvider } from "@supabase/auth-helpers-react";
+import { useState } from "react";
 import Head from "next/head";
 import Header from "@/components/Header/header";
 

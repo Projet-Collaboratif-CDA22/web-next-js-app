@@ -1,4 +1,4 @@
-import {Course} from "@/types/definition";
+import { Course } from "@/types/definition";
 import Image from "next/image";
 import Link from "next/link";
 

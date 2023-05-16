@@ -1,7 +1,7 @@
-import {CourseLocation} from "@/types/definition";
-import {AddressAutofillRetrieveResponse} from "@mapbox/search-js-core";
-import {AddressAutofill} from "@mapbox/search-js-react";
-import {Container, FloatingLabel, Form} from "react-bootstrap";
+import { CourseLocation } from "@/types/definition";
+import { AddressAutofillRetrieveResponse } from "@mapbox/search-js-core";
+import { AddressAutofill } from "@mapbox/search-js-react";
+import { Container, FloatingLabel, Form } from "react-bootstrap";
 
 export interface LocationProps {
   setLocation: any;

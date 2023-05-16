@@ -1,6 +1,10 @@
-import {useEffect, useState} from "react";
-import {Session, useSupabaseClient, useUser,} from "@supabase/auth-helpers-react";
-import {Database} from "@/types/supabase";
+import { useEffect, useState } from "react";
+import {
+  Session,
+  useSupabaseClient,
+  useUser,
+} from "@supabase/auth-helpers-react";
+import { Database } from "@/types/supabase";
 import LogoutButton from "@/components/Buttons/LogoutButton";
 import Avatar from "@/components/Account/Avatar";
 
