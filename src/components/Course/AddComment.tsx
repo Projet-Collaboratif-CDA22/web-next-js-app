@@ -1,9 +1,21 @@
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import { Button, Form } from "react-bootstrap";
-import supabase from "@/lib/config/supabaseClient";
-import { useUser } from "@supabase/auth-helpers-react";
+import {useSession, useSupabaseClient, useUser} from "@supabase/auth-helpers-react";
+
 
 export default function AddComment({ course_id }: { course_id: number }) {
+  const session = useSession();
+  const supabase = useSupabaseClient();
+
+  const [isConnected, setIsConnected] = useState<boolean>();
+
+  useEffect(() => {
+    if (session) {
+      setIsConnected(true);
+    } else {
+      setIsConnected(false);
+    }
+  }, [session]);
   const [comment, setComment] = useState<string>("");
   let [notif, setNotif] = useState<{ body: string; color: string }>();
   const user = useUser();
@@ -48,6 +60,7 @@ export default function AddComment({ course_id }: { course_id: number }) {
         <Form.Label>Commenter</Form.Label>
         <Form.Control
           type="text"
+          disabled={!isConnected}
           onChange={(e) => {
             setComment(e.target.value);
           }}

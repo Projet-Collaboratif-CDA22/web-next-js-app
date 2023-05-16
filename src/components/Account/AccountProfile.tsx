@@ -113,8 +113,7 @@ export default function Account({ session }: { session: Session }) {
       <div>
         <LogoutButton />
       </div>
-      {/*@ts-ignore*/}
-      <div>Role : {roles.map((role) => role)}</div>
+      <div>Role : {roles}</div>
     </div>
   );
 }
