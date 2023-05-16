@@ -36,3 +36,6 @@ export async function participateToCourse(userId: string, courseId: number) {
     user_enrolled: userId,
   });
 }
+export async function addFavorite(favorite: { course: number; user: string }) {
+  return supabase.from("favorite_course").insert(favorite);
+}

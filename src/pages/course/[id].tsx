@@ -14,7 +14,7 @@ import moment from "moment";
 import AddComment from "@/components/Course/AddComment";
 import { useSession, useUser } from "@supabase/auth-helpers-react";
 import Router from "next/router";
-import { participateToCourse } from "@/services/user/userServices";
+import { addFavorite, participateToCourse } from "@/services/user/userServices";
 
 export default function CoursePageDetails({ course }: { course: Course }) {
   const session = useSession();
@@ -76,6 +76,15 @@ export default function CoursePageDetails({ course }: { course: Course }) {
     getComments();
   }, [course.id, coms]);
 
+  const handlefav = async () => {
+    let newfav = {
+      course: course.id,
+      //@ts-ignore
+      user: user.id,
+    };
+    const { data, error } = await addFavorite(newfav);
+    alert("Cours ajouté aux favoris");
+  };
   return (
     <>
       <div className="">
@@ -148,6 +157,9 @@ export default function CoursePageDetails({ course }: { course: Course }) {
                   onClick={handleFlag}
                 >
                   Signaler
+                </button>
+                <button className="btn mx-1 btn-success" onClick={handlefav}>
+                  Ajouter aux favoris
                 </button>
               </Accordion.Body>
             </Accordion.Item>
