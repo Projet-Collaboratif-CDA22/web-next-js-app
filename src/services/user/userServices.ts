@@ -16,3 +16,7 @@ export function addToUserFavorites(userId: number, courseId: number) {
 export async function getJoinedCoursesByUserId(userId: number) {
   return supabase.from("enroll_course").select().eq("user", userId);
 }
+
+export async function getRolesByUserId(userId: number) {
+  return supabase.from("profiles").select("role").eq("id", userId);
+}
