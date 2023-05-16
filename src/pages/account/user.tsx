@@ -1,9 +1,5 @@
-import {
-  useSession,
-  useUser,
-  useSupabaseClient,
-} from "@supabase/auth-helpers-react";
-import { Container, Button } from "react-bootstrap";
+import {useSession, useSupabaseClient, useUser,} from "@supabase/auth-helpers-react";
+import {Button, Container} from "react-bootstrap";
 
 export default function Home() {
   const session = useSession();

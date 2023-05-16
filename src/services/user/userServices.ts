@@ -20,3 +20,13 @@ export async function getJoinedCoursesByUserId(userId: number) {
 export async function getRolesByUserId(userId: number) {
   return supabase.from("profiles").select("role").eq("id", userId);
 }
+export async function getUserNameById(id: string) {
+  return await supabase
+    .from("profiles")
+    .select("username")
+    .eq("id", id)
+    .single();
+}
+export async function getUserById(id: string) {
+  return supabase.from("profiles").select().eq("id", id).single();
+}

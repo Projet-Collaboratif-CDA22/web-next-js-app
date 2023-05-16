@@ -1,11 +1,6 @@
 import CourseElement from "@/components/Course/CourseElement";
-import Grid from "@/components/Grid/grid";
-import { useEffect, useState } from "react";
-import {
-  CoursesReponseError,
-  CoursesResponseSuccess,
-  getAllCourses,
-} from "@/services/courses/courses.service";
+import {useEffect, useState} from "react";
+import {CoursesReponseError, CoursesResponseSuccess, getAllCourses,} from "@/services/courses/courses.service";
 
 export default function CourseList() {
   const [courses, setCourses] = useState<CoursesResponseSuccess>(null);

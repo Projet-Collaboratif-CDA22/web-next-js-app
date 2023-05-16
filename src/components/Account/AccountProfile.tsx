@@ -1,10 +1,6 @@
-import { useState, useEffect } from "react";
-import {
-  useUser,
-  useSupabaseClient,
-  Session,
-} from "@supabase/auth-helpers-react";
-import { Database } from "@/types/supabase";
+import {useEffect, useState} from "react";
+import {Session, useSupabaseClient, useUser,} from "@supabase/auth-helpers-react";
+import {Database} from "@/types/supabase";
 import LogoutButton from "@/components/Buttons/LogoutButton";
 import Avatar from "@/components/Account/Avatar";
 
@@ -16,7 +12,7 @@ export default function Account({ session }: { session: Session }) {
   const [username, setUsername] = useState<Profiles["username"]>(null);
   const [full_name, setFullName] = useState<Profiles["full_name"]>(null);
   const [avatar_url, setAvatarUrl] = useState<Profiles["avatar_url"]>(null);
-  const [roles, setRoles] = useState<Profiles["role"]>([]);
+  const [roles, setRoles] = useState<Profiles["role"]>();
 
   useEffect(() => {
     getProfile();
@@ -25,7 +21,7 @@ export default function Account({ session }: { session: Session }) {
     try {
       let { data, error, status } = await supabase
         .from("profiles")
-        .select(`username, full_name, avatar_url, role`)
+        .select(`id, username, full_name, avatar_url, role`)
         .eq("id", user?.id)
         .single();
 
@@ -113,6 +109,7 @@ export default function Account({ session }: { session: Session }) {
       <div>
         <LogoutButton />
       </div>
+      {/*@ts-ignore*/}
       <div>Role : {roles.map((role) => role)}</div>
     </div>
   );

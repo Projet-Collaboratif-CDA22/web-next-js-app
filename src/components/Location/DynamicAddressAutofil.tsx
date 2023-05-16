@@ -1,4 +1,4 @@
-import { CourseLocation } from "@/types/definition";
+import {CourseLocation} from "@/types/definition";
 import dynamic from "next/dynamic";
 
 const DynamicAddressAutoFillWithNoSSR = dynamic(

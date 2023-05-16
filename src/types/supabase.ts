@@ -28,6 +28,7 @@ export interface Database {
       };
       comment: {
         Row: {
+          body: string;
           course_id: number;
           created_at: string | null;
           id: number;
@@ -36,6 +37,7 @@ export interface Database {
           user_id: string;
         };
         Insert: {
+          body?: string;
           course_id: number;
           created_at?: string | null;
           id?: number;
@@ -44,6 +46,7 @@ export interface Database {
           user_id: string;
         };
         Update: {
+          body?: string;
           course_id?: number;
           created_at?: string | null;
           id?: number;
@@ -54,6 +57,7 @@ export interface Database {
       };
       courses: {
         Row: {
+          attendees: string[] | null;
           author: string;
           categories: number | null;
           coordinates: Json | null;
@@ -71,6 +75,7 @@ export interface Database {
           title: string | null;
         };
         Insert: {
+          attendees?: string[] | null;
           author?: string;
           categories?: number | null;
           coordinates?: Json | null;
@@ -88,6 +93,7 @@ export interface Database {
           title?: string | null;
         };
         Update: {
+          attendees?: string[] | null;
           author?: string;
           categories?: number | null;
           coordinates?: Json | null;
@@ -153,7 +159,7 @@ export interface Database {
           avatar_url: string | null;
           full_name: string | null;
           id: string;
-          role: string[];
+          role: string;
           updated_at: string | null;
           username: string | null;
           website: string | null;
@@ -162,7 +168,7 @@ export interface Database {
           avatar_url?: string | null;
           full_name?: string | null;
           id: string;
-          role?: string[];
+          role?: string;
           updated_at?: string | null;
           username?: string | null;
           website?: string | null;
@@ -171,7 +177,7 @@ export interface Database {
           avatar_url?: string | null;
           full_name?: string | null;
           id?: string;
-          role?: string[];
+          role?: string;
           updated_at?: string | null;
           username?: string | null;
           website?: string | null;

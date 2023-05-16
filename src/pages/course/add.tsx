@@ -1,10 +1,7 @@
 import CreateCourse from "@/components/Course/CreateCourse";
-import { Category } from "@/types/definition";
-import {
-  CategoryResponseError,
-  getAllCategories,
-} from "@/services/category/category.service";
-import { useState, useEffect } from "react";
+import {Category} from "@/types/definition";
+import {CategoryResponseError, getAllCategories,} from "@/services/category/category.service";
+import {useEffect, useState} from "react";
 
 export default function Courses() {
   const [categories, setCategories] = useState<Category[]>([]);

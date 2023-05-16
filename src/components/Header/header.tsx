@@ -1,7 +1,7 @@
-import { useSession, useSupabaseClient } from "@supabase/auth-helpers-react";
+import {useSession, useSupabaseClient} from "@supabase/auth-helpers-react";
 import Image from "next/image";
-import { useEffect, useState } from "react";
-import { Container, Nav, NavDropdown, Navbar } from "react-bootstrap";
+import {useEffect, useState} from "react";
+import {Container, Nav, Navbar, NavDropdown} from "react-bootstrap";
 
 function Header() {
   const session = useSession();

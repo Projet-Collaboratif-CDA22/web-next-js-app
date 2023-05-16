@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { useSupabaseClient } from "@supabase/auth-helpers-react";
-import { Database } from "@/types/supabase";
+import React, {useEffect, useState} from "react";
+import {useSupabaseClient} from "@supabase/auth-helpers-react";
+import {Database} from "@/types/supabase";
 import Image from "next/image";
+
 type Profiles = Database["public"]["Tables"]["profiles"]["Row"];
 
 export default function Avatar({
