@@ -1,7 +1,10 @@
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import {useSession, useSupabaseClient, useUser} from "@supabase/auth-helpers-react";
-
+import {
+  useSession,
+  useSupabaseClient,
+  useUser,
+} from "@supabase/auth-helpers-react";
 
 export default function AddComment({ course_id }: { course_id: number }) {
   const session = useSession();

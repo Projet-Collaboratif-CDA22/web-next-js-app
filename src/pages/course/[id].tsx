@@ -10,7 +10,7 @@ import Badge from "react-bootstrap/Badge";
 import { getCategoryById } from "@/services/category/category.service";
 import moment from "moment";
 import AddComment from "@/components/Course/AddComment";
-import {useSession} from "@supabase/auth-helpers-react";
+import { useSession } from "@supabase/auth-helpers-react";
 import Router from "next/router";
 
 export default function CoursePageDetails({
@@ -22,13 +22,13 @@ export default function CoursePageDetails({
 }) {
   const session = useSession();
   useEffect(() => {
-   const checkSession= ()=> {
+    const checkSession = () => {
       if (!session?.user) {
         return Router.push("/login");
       }
-    }
+    };
     checkSession();
-  },[session]);
+  }, [session]);
   const [canParticipate, setCanParticipate] = useState<boolean>(false);
   const [categoryTitle, setCategoryTitle] = useState<string>("");
   const [coms, setComs] = useState<any[]>([]);

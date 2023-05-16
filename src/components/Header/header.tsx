@@ -1,7 +1,8 @@
 import { useSession, useSupabaseClient } from "@supabase/auth-helpers-react";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { MouseEvent, useEffect, useState } from "react";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
+import Router from "next/router";
 
 function Header() {
   const session = useSession();
@@ -24,9 +25,12 @@ function Header() {
     // setIsConnected(!isConnected);
   }
 
-  function handleLogout() {
+  async function handleLogout(e: React.MouseEvent<HTMLElement>) {
+    e.preventDefault();
     if (session) {
-      supabase.auth.signOut();
+      supabase.auth.signOut().then(() => {
+        return Router.push("/");
+      });
     }
     return;
   }
@@ -80,7 +84,7 @@ function Header() {
                       Mes cours proposés
                     </NavDropdown.Item>
                     <NavDropdown.Divider />
-                    <NavDropdown.Item href="/" onClick={() => handleLogout()}>
+                    <NavDropdown.Item href="/" onClick={(e) => handleLogout(e)}>
                       Me déconnecter
                     </NavDropdown.Item>
                   </>
