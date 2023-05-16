@@ -1,6 +1,8 @@
 import {
+  addCourse,
   getCommentsByCourseId,
   getCourseById,
+  updateCourse,
 } from "@/services/courses/courses.service";
 import { Course } from "@/types/definition";
 import { GetServerSideProps } from "next";
@@ -10,25 +12,12 @@ import Badge from "react-bootstrap/Badge";
 import { getCategoryById } from "@/services/category/category.service";
 import moment from "moment";
 import AddComment from "@/components/Course/AddComment";
-import { useSession } from "@supabase/auth-helpers-react";
+import { useSession, useUser } from "@supabase/auth-helpers-react";
 import Router from "next/router";
 
-export default function CoursePageDetails({
-  course,
-  comments,
-}: {
-  course: Course;
-  comments: any[];
-}) {
+export default function CoursePageDetails({ course }: { course: Course }) {
   const session = useSession();
-  useEffect(() => {
-    const checkSession = () => {
-      if (!session?.user) {
-        return Router.push("/login");
-      }
-    };
-    checkSession();
-  }, [session]);
+  const user = useUser();
   const [canParticipate, setCanParticipate] = useState<boolean>(false);
   const [categoryTitle, setCategoryTitle] = useState<string>("");
   const [coms, setComs] = useState<any[]>([]);
@@ -40,7 +29,37 @@ export default function CoursePageDetails({
     };
     getCatName();
   }, [course.categories]);
-  console.log(comments);
+  const handleFlag = async () => {
+    let updateData = {
+      ...course,
+      is_flagged: !course.is_flagged,
+    };
+    const { data, error } = await updateCourse(updateData);
+    console.log(data, error);
+  };
+  const handleParticipate = () => {};
+  useEffect(() => {
+    const checkSession = () => {
+      if (!session && !user) {
+        console.log("Not Connected");
+        return Router.push("/account");
+      }
+    };
+    checkSession();
+  }, [session, user]);
+  useEffect(() => {
+    const getComments = async () => {
+      const { data, error } = await getCommentsByCourseId(course.id);
+      if (error) {
+        console.log(error);
+        setComs([]);
+      } else {
+        setComs(data);
+      }
+    };
+    getComments();
+  }, [course.id, coms]);
+
   return (
     <>
       <div className="">
@@ -72,8 +91,8 @@ export default function CoursePageDetails({
             <Accordion.Item eventKey="1">
               <Accordion.Header>Commentaires</Accordion.Header>
               <Accordion.Body>
-                {comments &&
-                  comments.map((comment, index) => (
+                {coms &&
+                  coms.map((comment, index) => (
                     <div key={index}>
                       <p>Name : {comment.user_id}</p> Date:{" "}
                       {moment(comment.created_at).format("DD/MM/YYYY")}
@@ -101,8 +120,20 @@ export default function CoursePageDetails({
             <Accordion.Item eventKey="3">
               <Accordion.Header>Call to action</Accordion.Header>
               <Accordion.Body className="flex-row-reverse">
-                <button className="btn btn-primary mx-1">Participer</button>
-                <button className="btn btn-warning mx-1">Signaler</button>
+                <button
+                  className="btn btn-primary mx-1"
+                  onClick={handleParticipate}
+                >
+                  Participer
+                </button>
+                <button
+                  className={`btn mx-1 btn-${
+                    course.is_flagged ? "danger" : "warning"
+                  }`}
+                  onClick={handleFlag}
+                >
+                  Signaler
+                </button>
               </Accordion.Body>
             </Accordion.Item>
           </Accordion>
@@ -118,16 +149,9 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   if (error) {
     console.log(error.message);
   }
-  const comments = await getCommentsByCourseId(Number(params?.id));
-
-  console.log(comments);
-  if (comments.error) {
-    console.log(comments.error.message);
-  }
   return {
     props: {
       course: data,
-      comments: comments.data,
     },
   };
 };
