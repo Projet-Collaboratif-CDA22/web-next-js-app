@@ -29,7 +29,6 @@ export async function getRolesByUserId(userId: string) {
     return eRole.none;
   } else {
     if (data) {
-      debugger;
       switch (data.role) {
         case "admin":
           return eRole.admin;

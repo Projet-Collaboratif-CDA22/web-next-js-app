@@ -129,6 +129,7 @@ function Header() {
                   <NavDropdown.Item href="/admin/course">
                     Gestion des cours
                   </NavDropdown.Item>
+                  <NavDropdown.Item href="/admin/misc">Divers</NavDropdown.Item>
                   <NavDropdown.Item href="/admin/statistiques">
                     Statistiques
                   </NavDropdown.Item>

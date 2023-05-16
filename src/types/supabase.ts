@@ -13,16 +13,19 @@ export interface Database {
         Row: {
           created_at: string | null;
           id: number;
+          is_active: boolean;
           title: string;
         };
         Insert: {
           created_at?: string | null;
           id?: number;
+          is_active?: boolean;
           title: string;
         };
         Update: {
           created_at?: string | null;
           id?: number;
+          is_active?: boolean;
           title?: string;
         };
       };

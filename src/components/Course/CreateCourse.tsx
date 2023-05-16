@@ -99,6 +99,7 @@ export default function CreateCourse({
                     console.log(categories);
                   }}
                 ></Form.Control>
+
                 <Form.Control.Feedback type="invalid">
                   {errors.title?.message}
                 </Form.Control.Feedback>
