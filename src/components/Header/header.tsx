@@ -25,6 +25,7 @@ function Header() {
   }
 
   function handleLogout() {
+    debugger;
     if (session) {
       supabase.auth.signOut();
     }
@@ -80,7 +81,7 @@ function Header() {
                       Mes cours proposés
                     </NavDropdown.Item>
                     <NavDropdown.Divider />
-                    <NavDropdown.Item href="/" onClick={() => handleLogout()}>
+                    <NavDropdown.Item href="#" onClick={() => handleLogout()}>
                       Me déconnecter
                     </NavDropdown.Item>
                   </>
