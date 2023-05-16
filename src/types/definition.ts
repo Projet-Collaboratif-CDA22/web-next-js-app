@@ -18,3 +18,10 @@ export type Coordinates = {
 
 //Category
 export type Category = Database["public"]["Tables"]["category"]["Row"];
+
+export enum eRole {
+  none,
+  member,
+  moderator,
+  admin,
+}

@@ -7,6 +7,7 @@ import {
 import { Database } from "@/types/supabase";
 import LogoutButton from "@/components/Buttons/LogoutButton";
 import Avatar from "@/components/Account/Avatar";
+import { eRole } from "@/types/definition";
 
 type Profiles = Database["public"]["Tables"]["profiles"]["Row"];
 
@@ -16,7 +17,7 @@ export default function Account({ session }: { session: Session }) {
   const [username, setUsername] = useState<Profiles["username"]>(null);
   const [full_name, setFullName] = useState<Profiles["full_name"]>(null);
   const [avatar_url, setAvatarUrl] = useState<Profiles["avatar_url"]>(null);
-  const [roles, setRoles] = useState<Profiles["role"]>([]);
+  const [roles, setRoles] = useState<Profiles["role"]>("");
 
   useEffect(() => {
     getProfile();
@@ -113,7 +114,7 @@ export default function Account({ session }: { session: Session }) {
       <div>
         <LogoutButton />
       </div>
-      <div>Role : {roles.map((role) => role)}</div>
+      <div>Role : {roles}</div>
     </div>
   );
 }

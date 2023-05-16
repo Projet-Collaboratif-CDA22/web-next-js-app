@@ -52,7 +52,6 @@ export default function CreateCourse({
 
   useEffect(() => {
     const submitCourse = async () => {
-      debugger;
       console.log("here");
 
       if (course) {
@@ -70,7 +69,6 @@ export default function CreateCourse({
   }, [course, setCourse]);
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
-    debugger;
     const courseInput = handleCourseInput(data, location!);
     setCourse(courseInput);
   };
