@@ -14,6 +14,7 @@ import moment from "moment";
 import AddComment from "@/components/Course/AddComment";
 import { useSession, useUser } from "@supabase/auth-helpers-react";
 import Router from "next/router";
+import { participateToCourse } from "@/services/user/userServices";
 
 export default function CoursePageDetails({ course }: { course: Course }) {
   const session = useSession();
@@ -46,7 +47,13 @@ export default function CoursePageDetails({ course }: { course: Course }) {
 
     setFlagColor(flag ? "danger" : "success");
   };
-  const handleParticipate = () => {};
+  const handleParticipate = () => {
+    setCanParticipate(!canParticipate);
+    //@ts-ignore
+    participateToCourse(user.id, course.id).then(({ data, error }) => {
+      alert("Vous êtes inscrit à ce cours");
+    });
+  };
   useEffect(() => {
     const checkSession = () => {
       if (!session && !user) {
@@ -132,6 +139,7 @@ export default function CoursePageDetails({ course }: { course: Course }) {
                 <button
                   className="btn btn-primary mx-1"
                   onClick={handleParticipate}
+                  disabled={canParticipate}
                 >
                   Participer
                 </button>

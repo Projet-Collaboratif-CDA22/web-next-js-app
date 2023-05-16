@@ -30,3 +30,9 @@ export async function getUserNameById(id: string) {
 export async function getUserById(id: string) {
   return supabase.from("profiles").select().eq("id", id).single();
 }
+export async function participateToCourse(userId: string, courseId: number) {
+  return supabase.from("enroll_course").insert({
+    course_enrolled: courseId,
+    user_enrolled: userId,
+  });
+}
