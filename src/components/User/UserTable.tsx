@@ -27,6 +27,7 @@ export default function Home() {
         setLoading(false);
       }
     };
+    fetchUsers();
   }, [users]);
 
   useEffect(() => {
@@ -61,7 +62,7 @@ export default function Home() {
           <tr>
             <th>Utilisateur</th>
             <th>Etat</th>
-            <th>Actions</th>
+            <th>Statut</th>
           </tr>
         </thead>
         <tbody>
@@ -69,6 +70,7 @@ export default function Home() {
             <tr key={index}>
               <td>{user.full_name}</td>
               <td>{user.is_active ? "actif" : "inactif"}</td>
+              <td>{user.role}</td>
               <td>
                 {/* <Button
                   disabled={!user.is_active}

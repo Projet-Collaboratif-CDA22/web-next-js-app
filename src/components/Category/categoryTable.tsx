@@ -47,9 +47,9 @@ export default function CategoryComponent() {
     const addCategory = async () => {
       // console.log(newCategory);
       if (newCategory === "") return;
-      if (categories.find((category) => category.title === newCategory)) {
+      if (await categories.find((category) => category.title === newCategory)) {
         console.log("erreur duplication");
-        alert("La catégorie existe déjà");
+        // alert("La catégorie existe déjà");
         return;
       }
       const { data, error } = await createCategory(newCategory);
@@ -60,7 +60,7 @@ export default function CategoryComponent() {
       }
     };
     addCategory();
-  }, [newCategory, setNewCategory, categories]);
+  }, [newCategory, categories]);
 
   return (
     <Container fluid="md">

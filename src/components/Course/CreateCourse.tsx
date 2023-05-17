@@ -19,6 +19,8 @@ import { addCourse } from "@/services/courses/courses.service";
 import { handleCourseInput } from "@/services/courses/form.service";
 import DynamicAddress from "../Location/DynamicAddressAutofil";
 import Router from "next/router";
+import { useUser } from "@supabase/auth-helpers-react";
+import { log } from "console";
 
 type Inputs = yup.InferType<typeof CourseSchema>;
 export type { Inputs as CourseInputs };
@@ -28,12 +30,14 @@ export default function CreateCourse({
 }: {
   props: Category[];
 }) {
+  const user = useUser();
   const [place, setPlace] = useState<number>(1);
   const [duration, setDuration] = useState<number>(15);
   const [location, setLocation] = useState<CourseLocation>();
   const [locationValidated, setLocationValidated] = useState<boolean>(false);
   const [course, setCourse] = useState<CourseInsert>();
 
+  console.log(user?.id);
   const {
     register,
     handleSubmit,
@@ -55,6 +59,7 @@ export default function CreateCourse({
       console.log("here");
 
       if (course) {
+        course.author = user?.id;
         const { data, error } = await addCourse(course);
         if (data) {
           alert("Le cours a été créé avec succès");

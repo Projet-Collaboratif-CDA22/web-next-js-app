@@ -214,6 +214,14 @@ export interface Database {
       };
     };
     Views: {
+      category_stat: {
+        Row: {
+          id: number;
+          categories: number | null;
+          count: number | null;
+          title: string | null;
+        };
+      };
       geography_columns: {
         Row: {
           coord_dimension: number | null;

@@ -37,3 +37,7 @@ export async function updateUserRole(id: string, role: eRole) {
     .eq("id", id)
     .single();
 }
+
+export async function getCategoryStat() {
+  return await supabase.from("category_stat").select("*");
+}

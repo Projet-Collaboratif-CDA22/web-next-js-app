@@ -21,6 +21,8 @@ export type Category = Database["public"]["Tables"]["category"]["Row"];
 
 export type User = Database["public"]["Tables"]["profiles"]["Row"];
 
+export type CategoryStat = Database["public"]["Views"]["category_stat"]["Row"];
+
 export enum eRole {
   none,
   member,
