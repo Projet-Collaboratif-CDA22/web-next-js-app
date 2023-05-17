@@ -99,7 +99,9 @@ function Header() {
 
                 {isConnected && (
                   <>
-                    <NavDropdown.Item href="/account">Mon profil</NavDropdown.Item>
+                    <NavDropdown.Item href="/account">
+                      Mon profil
+                    </NavDropdown.Item>
 
                     <NavDropdown.Divider />
                     <NavDropdown.Item href="/" onClick={(e) => handleLogout(e)}>
