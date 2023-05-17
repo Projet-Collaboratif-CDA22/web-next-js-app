@@ -1,5 +1,4 @@
 import CourseElement from "@/components/Course/CourseElement";
-import Grid from "@/components/Grid/grid";
 import { useEffect, useState } from "react";
 import {
   CoursesReponseError,

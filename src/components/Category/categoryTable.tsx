@@ -20,7 +20,7 @@ export default function CategoryComponent() {
         setCategories([]);
         fetchError(error);
       } else {
-        setCategories(data);
+        setCategories(data!);
         fetchError(null);
         setLoading(false);
       }

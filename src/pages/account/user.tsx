@@ -2,8 +2,8 @@ import { getRolesByUserId, getUserById } from "@/services/user/userServices";
 import { eRole } from "@/types/definition";
 import {
   useSession,
-  useUser,
   useSupabaseClient,
+  useUser,
 } from "@supabase/auth-helpers-react";
 import { useEffect, useState } from "react";
 import { Container, Button, Row } from "react-bootstrap";

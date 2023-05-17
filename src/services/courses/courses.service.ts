@@ -17,6 +17,18 @@ export async function addCourse(course: CourseInsert) {
   return await supabase.from("courses").insert(course).select().single();
 }
 
+export async function updateCourse(course: Course) {
+  return await supabase
+    .from("courses")
+    .update(course)
+    .eq("id", course.id)
+    .select()
+    .single();
+}
+export async function getCommentsByCourseId(id: number) {
+  return supabase.from("comment").select("*, profiles:username").select();
+}
+
 type CoursesResponse = Awaited<ReturnType<typeof getAllCourses>>;
 export type CoursesResponseSuccess = CoursesResponse["data"];
 export type CoursesReponseError = CoursesResponse["error"];

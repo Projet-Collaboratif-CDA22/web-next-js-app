@@ -1,6 +1,5 @@
-import Link from "next/link";
 import CourseList from "@/components/Course/CourseList";
-import { Button, Dropdown } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 
 export default function Courses() {
   return (

@@ -46,3 +46,19 @@ export async function getRolesByUserId(userId: string) {
 export async function getUserById(userId: string) {
   return await supabase.from("profiles").select("*").eq("id", userId).single();
 }
+export async function getUserNameById(id: string) {
+  return await supabase
+    .from("profiles")
+    .select("username")
+    .eq("id", id)
+    .single();
+}
+export async function participateToCourse(userId: string, courseId: number) {
+  return supabase.from("enroll_course").insert({
+    course_enrolled: courseId,
+    user_enrolled: userId,
+  });
+}
+export async function addFavorite(favorite: { course: number; user: string }) {
+  return supabase.from("favorite_course").insert(favorite);
+}

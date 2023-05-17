@@ -5,7 +5,7 @@ import { Button, Container, Row, Table } from "react-bootstrap";
 import { CSVLink } from "react-csv";
 
 interface StatProps {
-  id: number;
+  id: number | null;
   category: string | null;
   count: number | null;
 }
@@ -24,7 +24,7 @@ export default function Home() {
   function fetchDataStat() {
     let statValues: StatProps[] = stat.map((s) => {
       return {
-        id: s.id,
+        id: s.categories!,
         category: s.title,
         count: s.count,
       };
@@ -46,7 +46,7 @@ export default function Home() {
         setDataStat(
           stat.map((s) => {
             return {
-              id: s.id,
+              id: s.categories,
               category: s.title,
               count: s.count,
             };

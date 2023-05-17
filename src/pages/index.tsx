@@ -1,11 +1,8 @@
-import Head from "next/head";
 import Hero from "@/components/Hero/hero";
-import Header from "@/components/Header/header";
 import CourseList from "@/components/Course/CourseList";
 import { Button } from "react-bootstrap";
-import { NextRequest, NextResponse } from "next/server";
-import { redirect } from "next/dist/server/api-utils";
 import Router from "next/router";
+
 export default function Home() {
   return (
     <>
