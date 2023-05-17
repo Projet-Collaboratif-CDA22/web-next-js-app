@@ -7,6 +7,7 @@ import {
 import { Database } from "@/types/supabase";
 import LogoutButton from "@/components/Buttons/LogoutButton";
 import Avatar from "@/components/Account/Avatar";
+import { eRole } from "@/types/definition";
 
 type Profiles = Database["public"]["Tables"]["profiles"]["Row"];
 

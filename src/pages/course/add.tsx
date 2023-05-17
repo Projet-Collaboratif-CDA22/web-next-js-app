@@ -4,9 +4,11 @@ import {
   CategoryResponseError,
   getAllCategories,
 } from "@/services/category/category.service";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
+import { useUser } from "@supabase/auth-helpers-react";
 
 export default function Courses() {
+  const user = useUser();
   const [categories, setCategories] = useState<Category[]>([]);
   const [fetchCategoryError, setFetchCategoryError] =
     useState<CategoryResponseError>(null);

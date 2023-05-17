@@ -13,16 +13,19 @@ export interface Database {
         Row: {
           created_at: string | null;
           id: number;
+          is_active: boolean;
           title: string;
         };
         Insert: {
           created_at?: string | null;
           id?: number;
+          is_active?: boolean;
           title: string;
         };
         Update: {
           created_at?: string | null;
           id?: number;
+          is_active?: boolean;
           title?: string;
         };
       };
@@ -159,6 +162,7 @@ export interface Database {
           avatar_url: string | null;
           full_name: string | null;
           id: string;
+          is_active: boolean | null;
           role: string;
           updated_at: string | null;
           username: string | null;
@@ -168,6 +172,7 @@ export interface Database {
           avatar_url?: string | null;
           full_name?: string | null;
           id: string;
+          is_active?: boolean | null;
           role?: string;
           updated_at?: string | null;
           username?: string | null;
@@ -177,6 +182,7 @@ export interface Database {
           avatar_url?: string | null;
           full_name?: string | null;
           id?: string;
+          is_active?: boolean | null;
           role?: string;
           updated_at?: string | null;
           username?: string | null;
@@ -208,6 +214,13 @@ export interface Database {
       };
     };
     Views: {
+      category_stat: {
+        Row: {
+          categories: number | null;
+          count: number | null;
+          title: string | null;
+        };
+      };
       geography_columns: {
         Row: {
           coord_dimension: number | null;

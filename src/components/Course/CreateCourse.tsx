@@ -10,6 +10,8 @@ import { addCourse } from "@/services/courses/courses.service";
 import { handleCourseInput } from "@/services/courses/form.service";
 import DynamicAddress from "../Location/DynamicAddressAutofil";
 import Router from "next/router";
+import { useUser } from "@supabase/auth-helpers-react";
+import { log } from "console";
 
 type Inputs = yup.InferType<typeof CourseSchema>;
 export type { Inputs as CourseInputs };
@@ -19,12 +21,14 @@ export default function CreateCourse({
 }: {
   props: Category[];
 }) {
+  const user = useUser();
   const [place, setPlace] = useState<number>(1);
   const [duration, setDuration] = useState<number>(15);
   const [location, setLocation] = useState<CourseLocation>();
   const [locationValidated, setLocationValidated] = useState<boolean>(false);
   const [course, setCourse] = useState<CourseInsert>();
 
+  console.log(user?.id);
   const {
     register,
     handleSubmit,
@@ -43,10 +47,10 @@ export default function CreateCourse({
 
   useEffect(() => {
     const submitCourse = async () => {
-      debugger;
       console.log("here");
 
       if (course) {
+        course.author = user?.id;
         const { data, error } = await addCourse(course);
         if (data) {
           alert("Le cours a été créé avec succès");
@@ -61,7 +65,6 @@ export default function CreateCourse({
   }, [course, setCourse]);
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
-    debugger;
     const courseInput = handleCourseInput(data, location!);
     setCourse(courseInput);
   };
@@ -92,6 +95,7 @@ export default function CreateCourse({
                     console.log(categories);
                   }}
                 ></Form.Control>
+
                 <Form.Control.Feedback type="invalid">
                   {errors.title?.message}
                 </Form.Control.Feedback>
@@ -109,10 +113,7 @@ export default function CreateCourse({
                   type="textarea"
                   isInvalid={errors.description ? true : false}
                   {...register("description")}
-                  onChange={(e) => {
-                    console.log(e.target.value);
-                    console.log(errors.description?.message);
-                  }}
+                  onChange={(e) => {}}
                 />
                 <Form.Control.Feedback type="invalid">
                   {errors.description?.message}
@@ -172,9 +173,7 @@ export default function CreateCourse({
                   type="date"
                   isInvalid={errors.date ? true : false}
                   {...register("date")}
-                  onChange={(e) => {
-                    console.log(e.target.value);
-                  }}
+                  onChange={(e) => {}}
                 ></Form.Control>
                 <Form.Control.Feedback type="invalid">
                   {errors.date?.message}
