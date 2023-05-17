@@ -58,7 +58,6 @@ function Header() {
     }
     return;
   }
-  const messageInscrire: string = "S'inscrire";
   return (
     <>
       <Navbar bg="primary" variant="dark">
@@ -100,13 +99,8 @@ function Header() {
 
                 {isConnected && (
                   <>
-                    <NavDropdown.Item href="#">Mon profil</NavDropdown.Item>
-                    <NavDropdown.Item href="#">
-                      Mes cours suivis
-                    </NavDropdown.Item>
-                    <NavDropdown.Item href="#">
-                      Mes cours proposés
-                    </NavDropdown.Item>
+                    <NavDropdown.Item href="/account">Mon profil</NavDropdown.Item>
+
                     <NavDropdown.Divider />
                     <NavDropdown.Item href="/" onClick={(e) => handleLogout(e)}>
                       Me déconnecter
@@ -117,9 +111,6 @@ function Header() {
                   <>
                     <NavDropdown.Item href="/account/">
                       Se connecter
-                    </NavDropdown.Item>
-                    <NavDropdown.Item href="#">
-                      {messageInscrire}
                     </NavDropdown.Item>
                   </>
                 )}
