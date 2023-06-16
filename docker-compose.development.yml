@@ -1,0 +1,6 @@
+services:
+  web-next:
+    image:
+    restart: always
+    ports:
+      - "3000:3000"
