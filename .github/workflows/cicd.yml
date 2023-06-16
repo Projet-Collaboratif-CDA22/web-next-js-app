@@ -2,7 +2,6 @@ on: [ push ]
 jobs:
   deploy-development:
     runs-on: ubuntu-latest
-    if: github.ref_name == 'development'
     permissions:
       contents: read
       packages: write
@@ -18,4 +17,4 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           push: true
-          tags: ghcr.io/Projet-Collaboratif-CDA22/web-next-js-app:latest
+          tags: ghcr.io/projet-collaboratif-cda22/web-next-js-app:development
