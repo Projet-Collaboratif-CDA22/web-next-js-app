@@ -23,8 +23,8 @@ jobs:
         #--build-arg à passer en mdoe manuelle
         with:
           build-args: |
-            NEXT_PUBLIC_SUPABASE_URL=$NEXT_PUBLIC_SUPABASE_URL
-            NEXT_PUBLIC_SUPABASE_ANON_KEY=$NEXT_PUBLIC_SUPABASE_ANON_KEY
-            NEXT_PUBLIC_MAPBOX_TOKEN=$NEXT_PUBLIC_MAPBOX_TOKEN
+            NEXT_PUBLIC_SUPABASE_URL=${{NEXT_PUBLIC_SUPABASE_URL}}
+            NEXT_PUBLIC_SUPABASE_ANON_KEY=${{NEXT_PUBLIC_SUPABASE_ANON_KEY}}
+            NEXT_PUBLIC_MAPBOX_TOKEN=${{NEXT_PUBLIC_MAPBOX_TOKEN}}
           push: true
           tags: ghcr.io/projet-collaboratif-cda22/web-next-js-app:development
