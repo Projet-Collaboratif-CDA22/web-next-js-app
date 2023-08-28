@@ -20,7 +20,7 @@ jobs:
           NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
           NEXT_PUBLIC_MAPBOX_TOKEN: ${{ secrets.MAPBOX_TOKEN }}
         uses: docker/build-push-action@v4
-        #--build-arg à passer en mdoe manuelle
+        #--build-arg à passer en mode manuelle
         with:
           build-args: |
             NEXT_PUBLIC_SUPABASE_URL=${{ secrets.SUPABASE_URL }}
@@ -28,3 +28,20 @@ jobs:
             NEXT_PUBLIC_MAPBOX_TOKEN=${{ secrets.MAPBOX_TOKEN }}
           push: true
           tags: ghcr.io/projet-collaboratif-cda22/web-next-js-app:development
+  integration-test:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/cache@v3
+        with:
+          path: |
+            node_modules
+            /home/runner/.cache/Cypress
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+      - run: npm run e2e:headless
+      - uses: actions/upload-artifact@v3
+        if: success()
+        with:
+          name: e2e-tests
+          path: cypress/videos
