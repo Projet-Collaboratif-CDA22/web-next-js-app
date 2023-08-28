@@ -27,7 +27,7 @@ export default function Account({ session }: { session: Session }) {
       let { data, error, status } = await supabase
         .from("profiles")
         .select(`id, username, full_name, avatar_url, role`)
-        .eq("id", user?.id??'')
+        .eq("id", user?.id ?? "")
         .single();
 
       if (error && status !== 406) {
