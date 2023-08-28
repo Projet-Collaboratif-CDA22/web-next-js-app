@@ -20,7 +20,7 @@ jobs:
           path: |
             node_modules
             /home/runner/.cache/Cypress
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          key: cache
       - name: Install dependencies and build
         run: |
           npm install
