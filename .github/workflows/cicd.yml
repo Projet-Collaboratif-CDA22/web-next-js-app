@@ -8,28 +8,26 @@ jobs:
       packages: write
     steps:
       - uses: actions/checkout@v3
-      - name: Create cache
-        uses: actions/cache@v3
-        with:
-          path: |
-            node_modules
-            /home/runner/.cache/Cypress
-          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
-
-      - name: Login to GitHub Container Registry
-        uses: docker/login-action@v2
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Create ENV file
         run: |
           touch .env
           echo NEXT_PUBLIC_SUPABASE_URL=${{ secrets.SUPABASE_URL }} >> .env
           echo NEXT_PUBLIC_SUPABASE_ANON_KEY=${{ secrets.SUPABASE_ANON_KEY }} >> .env
           echo NEXT_PUBLIC_MAPBOX_TOKEN=${{ secrets.MAPBOX_TOKEN }} >> .env
-
+      - name: Create cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            node_modules
+            .env
+            /home/runner/.cache/Cypress
+          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       - name: Install dependencies and build
         run: |
           npm install
@@ -58,6 +56,7 @@ jobs:
         with:
           path: |
             node_modules
+            .env
             /home/runner/.cache/Cypress
           key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
       - run: npm run e2e:headless
