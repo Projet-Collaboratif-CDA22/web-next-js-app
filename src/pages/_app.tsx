@@ -13,7 +13,7 @@ export default function App({
   let supabaseUrl = process.env.SUPABASE_URL;
   let supabaseKey = process.env.SUPABASE_ANON_KEY;
   const [supabase] = useState(() =>
-    createBrowserSupabaseClient({ supabaseUrl, supabaseKey })
+    createBrowserSupabaseClient({supabaseUrl, supabaseKey} )
   );
   return (
     <SessionContextProvider
