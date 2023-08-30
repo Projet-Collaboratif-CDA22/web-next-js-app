@@ -6,7 +6,6 @@ describe("Navigation", () => {
     // Find a link with an href attribute containing "about" and click it
     cy.get('a[href*="course/30"]').click();
 
-    // The new page should contain an h1 with "Tous les cours"
     cy.get("button").contains("Se connecter");
   });
 });
