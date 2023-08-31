@@ -84,12 +84,14 @@ jobs:
 #    if: success()
     steps:
       - name: pull ec2
+        uses: webfactory/ssh-agent@v0.7.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_KEY_EC2 }}
         env:
           PRIVATE_KEY: ${{ secrets.SSH_KEY_EC2 }}
           HOST: ${{ secrets.DEV_HOST }}
           USER: ${{ secrets.DEV_USERNAME }}
         run: |
-          echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
           ssh -t -o StrictHostKeyChecking=no -i private_key ${USER}@${HOST} '
           docker run ghcr.io/projet-collaboratif-cda22/web-next-js-app:development 
           '
