@@ -87,5 +87,5 @@ jobs:
         uses: webfactory/ssh-agent@v0.7.0
         with:
           ssh-private-key: ${{ secrets.SSH_KEY_EC2 }}
-      - run: ssh -t -o StrictHostKeyChecking=no ${{ secrets.DEV_USERNAME }}@${{ secrets.DEV_HOST }} '
+      - run: ssh -o StrictHostKeyChecking=no ${{ secrets.DEV_USERNAME }}@${{ secrets.DEV_HOST }} '
           docker run ghcr.io/projet-collaboratif-cda22/web-next-js-app:development'
