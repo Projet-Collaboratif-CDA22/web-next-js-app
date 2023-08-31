@@ -54,4 +54,3 @@ jobs:
           new_string: "** Automatic pull request**"
           get_diff: true
           ignore_users: "dependabot"
-          allow_no_diff: false
