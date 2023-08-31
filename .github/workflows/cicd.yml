@@ -1,10 +1,9 @@
 on: [ push ]
 
 jobs:
-  
+
   pull-ec2:
     runs-on: ubuntu-latest
-    needs: build-and-push
     steps:
       - name: pull-ec2
         run: |
