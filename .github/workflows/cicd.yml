@@ -92,6 +92,6 @@ jobs:
           HOST: ${{ secrets.DEV_HOST }}
           USER: ${{ secrets.DEV_USERNAME }}
       - run: |
-          ssh -t -o StrictHostKeyChecking=no -i private_key ${USER}@${HOST} '
+          ssh -t -o StrictHostKeyChecking=no ${USER}@${HOST} '
           docker run ghcr.io/projet-collaboratif-cda22/web-next-js-app:development 
           '
