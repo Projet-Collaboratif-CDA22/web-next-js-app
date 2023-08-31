@@ -40,7 +40,7 @@ jobs:
         with:
           name: e2e-tests
           path: cypress/videos
-      - name: Create PR
+      - name: Create-PR
         if: success()
         uses: devops-infra/action-pull-request@v0.5.5
         with:
