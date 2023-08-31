@@ -6,10 +6,10 @@ describe("Navigation", () => {
     // Find a link with an href attribute containing "about" and click it
     cy.get('a[href*="course"]').click();
 
-    // The new url should include "/about"
+    // The new url should include "/course"
     cy.url().should("include", "/course");
 
-    // The new page should contain an h1 with "About page"
+    // The new page should contain an h1 with "Tous les cours"
     cy.get("h1").contains("Tous les cours");
   });
 });
