@@ -6,5 +6,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: pull-ec2
-        run: |
-          ssh -i ${{ secrets.SSH_KEY_EC2 }} -f docker run ghcr.io/projet-collaboratif-cda22/web-next-js-app:development
+        run: ssh -i ${{ secrets.SSH_KEY_EC2 }} -f docker run ghcr.io/projet-collaboratif-cda22/web-next-js-app:development
