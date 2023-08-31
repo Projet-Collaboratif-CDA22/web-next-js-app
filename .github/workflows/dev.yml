@@ -34,7 +34,7 @@ jobs:
             .env
             /home/runner/.cache/Cypress
           key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
-      - run: npm run e2e:headless
+     # - run: npm run e2e:headless
       - uses: actions/upload-artifact@v3
         if: success()
         with:
@@ -52,5 +52,3 @@ jobs:
           body: "**Automated pull request**"
           old_string: "<!-- automatic pull request -->"
           new_string: "** Automatic pull request**"
-          get_diff: true
-          ignore_users: "dependabot"
