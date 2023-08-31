@@ -5,12 +5,15 @@ on:
 jobs:
   deploy-config:
     runs-on: ubuntu-latest
+    needs:
+      - integration-test
+      - Create-PR
     permissions:
       contents: read
       packages: write
     steps:
-      - uses: actions/checkout@v3
       - name: Create ENV file
+        uses: actions/checkout@v3
         run: |
           touch .env
           echo NEXT_PUBLIC_SUPABASE_URL=${{ secrets.SUPABASE_URL }} >> .env
