@@ -10,8 +10,8 @@ export default function App({
   Component,
   pageProps: { ...pageProps },
 }: AppProps<{ initialSession: Session }>) {
-  let supabaseUrl = process.env.SUPABASE_URL;
-  let supabaseKey = process.env.SUPABASE_TOKEN;
+  let supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  let supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
   const [supabase] = useState(() =>
     createBrowserSupabaseClient({ supabaseUrl, supabaseKey })
   );

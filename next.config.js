@@ -2,8 +2,8 @@
 const nextConfig = {
   reactStrictMode: true,
   env: {
-    SUPABASE_URL: process.env.SUPABASE_URL,
-    SUPABASE_TOKEN: process.env.SUPABASE_TOKEN,
+    SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL,
+    SUPABASE_TOKEN: process.env.NEXT_PUBLIC_SUPABASE_TOKEN,
   },
 };
 
