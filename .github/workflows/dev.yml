@@ -52,4 +52,4 @@ jobs:
           body: "**Automated pull request**"
           old_string: "<!-- automatic pull request -->"
           new_string: "** Automatic pull request**"
-          diff: false
+          get_diff: false
