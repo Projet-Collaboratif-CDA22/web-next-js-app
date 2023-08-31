@@ -90,6 +90,6 @@ jobs:
           USER: ${{ secrets.DEV_USERNAME }}
         run: |
           echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
-          ssh -o StrictHostKeyChecking=no -i private_key ${USER}@${HOST} '
+          ssh -t -o StrictHostKeyChecking=no -i private_key ${USER}@${HOST} '
           docker run ghcr.io/projet-collaboratif-cda22/web-next-js-app:development 
           '
