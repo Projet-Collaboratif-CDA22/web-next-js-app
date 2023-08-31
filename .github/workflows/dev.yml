@@ -49,9 +49,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           source_branch: develop
           target_branch: recette
-          title: Auto Merge Request
-          template: .github/PULL_REQUEST_TEMPLATE.md
+          title: "Auto Merge Request"
           body: "**Automated pull request**"
-          old_string: "<!-- automatic pull request -->"
           new_string: "** Automatic pull request**"
           allow_no_diff: true
