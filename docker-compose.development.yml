@@ -1,6 +1,11 @@
+version: '3.8'
 services:
-  web-next:
-    image:
-    restart: always
+  web:
+    build:
+      dockerfile: Dockerfile-recette
+      context: ./
+    volumes:
+      - .:/app
+    command: npm run dev
     ports:
       - "3000:3000"
