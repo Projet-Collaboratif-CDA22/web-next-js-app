@@ -13,7 +13,7 @@ export default function Home() {
         </figcaption>
       </figure>
       <div className="text-center">
-        <a className="office-form" href="https://forms.office.com/e/CYGa3hK6">
+        <a className="office-form" href="https://forms.office.com/e/CYGan3hAK6">
           Un bug, une idée ? Par ici !
         </a>
       </div>
