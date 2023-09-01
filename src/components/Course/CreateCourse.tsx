@@ -46,7 +46,6 @@ export default function CreateCourse({
 
   useEffect(() => {
     const submitCourse = async () => {
-
       if (course) {
         course.author = user?.id;
         const { data, error } = await addCourse(course);
@@ -86,9 +85,7 @@ export default function CreateCourse({
                   type="text"
                   isInvalid={errors.title ? true : false}
                   {...register("title")}
-                  onChange={(e) => {
-
-                  }}
+                  onChange={(e) => {}}
                 ></Form.Control>
 
                 <Form.Control.Feedback type="invalid">

@@ -14,9 +14,7 @@ export default function Home() {
   const supabase = useSupabaseClient();
   const [member, setMember] = useState<eRole>(eRole.none);
 
-  function handleClick() {
-
-  }
+  function handleClick() {}
 
   useEffect(() => {
     const getRole = async () => {

@@ -41,8 +41,7 @@ export default function CoursePageDetails({ course }: { course: Course }) {
       ...course,
       is_flagged: flag,
     };
-    updateCourse(updateData).then(({ data, error }) => {
-    });
+    updateCourse(updateData).then(({ data, error }) => {});
 
     setFlagColor(flag ? "danger" : "success");
   };
