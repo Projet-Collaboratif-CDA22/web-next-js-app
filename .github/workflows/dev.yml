@@ -38,8 +38,11 @@ jobs:
             .env
             /home/runner/.cache/Cypress
           key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
-      - run: |
-          npm run e2e:headless
+      - uses: actions/checkout@v3
+      - uses: cypress-io/github-action@v5
+        with:
+          browser: chrome
+          headed: false
       - uses: actions/upload-artifact@v3
         if: success()
         with:
