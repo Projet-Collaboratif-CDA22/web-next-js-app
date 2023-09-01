@@ -66,6 +66,6 @@ jobs:
           ssh -o StrictHostKeyChecking=no ${{ secrets.RECETTE_USERNAME }}@${{ secrets.RECETTE_HOST }} "\
           sudo docker pull ghcr.io/projet-collaboratif-cda22/web-next-js-app:latest && \
           sudo docker run -d -p 3000:3000 ghcr.io/projet-collaboratif-cda22/web-next-js-app:latest"
-      - run: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.RECETTE_USERNAME }}@${{ secrets.RECETTE_HOST }} "\
-          sudo docker compose -f docker-compose.development.yml up -d --pull always"
+#      - run: |
+#          ssh -o StrictHostKeyChecking=no ${{ secrets.RECETTE_USERNAME }}@${{ secrets.RECETTE_HOST }} "\
+#          sudo docker compose -f docker-compose.development.yml up -d --pull always"
