@@ -1,0 +1,70 @@
+on:
+  pull_request:
+    types: [ closed ]
+    branches: [ main ]
+
+jobs:
+  deploy-config:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          path: recette
+      - run: |
+          touch .env
+          echo NEXT_PUBLIC_SUPABASE_URL=${{ secrets.SUPABASE_URL }} >> .env
+          echo NEXT_PUBLIC_SUPABASE_ANON_KEY=${{ secrets.SUPABASE_ANON_KEY }} >> .env
+          echo NEXT_PUBLIC_MAPBOX_TOKEN=${{ secrets.MAPBOX_TOKEN }} >> .env
+      - name: Create cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            node_modules
+            .env
+            /home/runner/.cache/Cypress
+          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+  deploy-development:
+    runs-on: ubuntu-latest
+    needs: deploy-config
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v3
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build and push
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+          NEXT_PUBLIC_MAPBOX_TOKEN: ${{ secrets.MAPBOX_TOKEN }}
+        uses: docker/build-push-action@v4
+        #--build-arg à passer en mode manuelle
+        with:
+          build-args: |
+            NEXT_PUBLIC_SUPABASE_URL=${{ secrets.SUPABASE_URL }}
+            NEXT_PUBLIC_SUPABASE_ANON_KEY=${{ secrets.SUPABASE_ANON_KEY }}
+            NEXT_PUBLIC_MAPBOX_TOKEN=${{ secrets.MAPBOX_TOKEN }}
+          push: true
+          tags: ghcr.io/projet-collaboratif-cda22/web-next-js-app:latest
+  deploy-docker:
+    runs-on: ubuntu-latest
+    needs: [deploy-config, deploy-development]
+    steps:
+      - uses: webfactory/ssh-agent@v0.8.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_KEY_EC2 }}
+      - run: |
+          ssh -o StrictHostKeyChecking=no ${{ secrets.PROD_USERNAME }}@${{ secrets.PROD_HOST }} "\
+          sudo docker stop next && \
+          sudo docker rm next && \
+          sudo docker pull ghcr.io/projet-collaboratif-cda22/web-next-js-app:latest && \
+          sudo docker run -d -p 3000:3000 --name next ghcr.io/projet-collaboratif-cda22/web-next-js-app:latest"

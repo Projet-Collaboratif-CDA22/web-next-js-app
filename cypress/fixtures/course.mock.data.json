@@ -1,0 +1,50 @@
+{
+  "getCourse": [
+    {
+      "id": 1,
+      "created_at": "2023-05-05",
+      "title": "Cours de Piano",
+      "description": "C'est un cours de piano, fait par un spécialiste.",
+      "catégorie": 2,
+      "time_slot": "2023-05-05 10:34",
+      "place_available": 10,
+      "duration_minute": 195,
+      "picture_url": "https://tulsivqfrmrsmmotpewc.supabase.co/storage/v1/object/public/courses-assets/course.png?t=2023-04-21T08%3A13%3A17.497Z",
+      "cordinate": {
+        "place_name": "123 Rue Saint-Martin, 75004 Paris, France",
+        "type": "Point",
+        "coordinates": {
+          "lon": 2.35115,
+          "lat": 48.860797
+        }
+      },
+      "is_validated": "TRUE",
+      "is_flagged": "FALSE",
+      "author": "64b4b2e3-a129-4db4-813b-13fbeaf49b0a",
+      "tags": "NULL"
+    },
+    {
+      "id": 2,
+      "created_at": "2023-05-06",
+      "title": "Cours de Java",
+      "description": "C'est un cours de java, fait par un spécialiste.",
+      "catégorie": 1,
+      "time_slot": "2023-05-06 11:56",
+      "place_available": 10,
+      "duration_minute": 195,
+      "picture_url": "https://tulsivqfrmrsmmotpewc.supabase.co/storage/v1/object/public/courses-assets/course.png?t=2023-04-21T08%3A13%3A17.497Z",
+      "cordinate": {
+        "place_name": "45 Rue De L'amiral De Coligny, 75001 Paris, France",
+        "type": "Point",
+        "coordinates": {
+          "lon": 2.340466,
+          "lat": 48.860175
+        }
+      },
+      "is_validated": "TRUE",
+      "is_flagged": "FALSE",
+      "author": "64b4b2e3-a129-4db4-813b-13fbeaf49b0a",
+      "tags": "NULL"
+    }
+  ]
+}

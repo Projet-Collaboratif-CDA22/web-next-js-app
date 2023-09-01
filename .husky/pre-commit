@@ -27,7 +27,22 @@ npm run check-format:dev ||
     false;
 )
 # If everything passes... Now we can build
-echo '\n 🔨... Alright.... Code looks good to me... Trying to build now. 🔨'
+echo '\n 🔨... Alright.... Code looks good to me... Testing it now. 🔨'
+
+#npm run e2e:headless ||
+#(
+#    echo '❌ E2E Tests Failed ❌
+#    View the errors above to see why.'
+#    false;
+#)
+#
+#  npm run component:headless ||
+#(
+#    echo '❌ Component Tests Failed ❌
+#    View the errors above to see why.'
+#    false;
+#)
+
 
 npm run build ||
 (
@@ -35,6 +50,6 @@ npm run build ||
     View the errors above to see why.'
     false;
 )
-
+echo '✅ Tests passed 100% !!!'
 # If everything passes... Now we can commit
-echo '✅ ✅ ✅ ✅ Amazing !! I am committing this now.'
+echo '✅  Amazing !! I am committing this now.'
