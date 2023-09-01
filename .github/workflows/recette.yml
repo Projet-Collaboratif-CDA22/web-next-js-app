@@ -88,8 +88,8 @@ jobs:
         uses: devops-infra/action-pull-request@v0.5.5
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          source_branch: develop
-          target_branch: recette
+          source_branch: recette
+          target_branch: main
           title: "Auto Merge Request"
           body: "**Automated pull request**"
           new_string: "** Automatic pull request**"
