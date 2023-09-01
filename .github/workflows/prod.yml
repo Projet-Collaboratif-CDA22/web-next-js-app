@@ -67,4 +67,4 @@ jobs:
           sudo docker stop next && \
           sudo docker rm next && \
           sudo docker pull ghcr.io/projet-collaboratif-cda22/web-next-js-app:latest && \
-          sudo docker run -d -p 3000:3000 ghcr.io/projet-collaboratif-cda22/web-next-js-app:latest"
+          sudo docker run -d -p 3000:3000 --name next ghcr.io/projet-collaboratif-cda22/web-next-js-app:latest"
