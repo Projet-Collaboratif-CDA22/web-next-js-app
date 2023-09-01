@@ -18,7 +18,6 @@ export default function Home() {
     const fetchUsers = async () => {
       const { data, error } = await getAllUsers();
       if (error) {
-        console.log(error.message);
         setUsers([]);
         fetchError(error);
       } else {

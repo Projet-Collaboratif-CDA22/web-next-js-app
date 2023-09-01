@@ -15,7 +15,6 @@ export function handleCourseInput(
     category,
   } = courseAttributes;
   const time_slot = new Date(`${date} ${time}`).toString();
-  console.log(time_slot);
   return {
     title,
     description,

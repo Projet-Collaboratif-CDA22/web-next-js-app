@@ -38,13 +38,11 @@ function Header() {
         return;
       }
       const role: eRole | undefined = await getRolesByUserId(user!.id);
-      console.log("role response : ", role);
       if (role === undefined) {
         setMember(eRole.none);
       } else {
         setMember(role);
       }
-      console.log("role : ", role);
     };
     getRole();
   }, [session, user]);

@@ -28,7 +28,6 @@ export default function CreateCourse({
   const [locationValidated, setLocationValidated] = useState<boolean>(false);
   const [course, setCourse] = useState<CourseInsert>();
 
-  console.log(user?.id);
   const {
     register,
     handleSubmit,
@@ -47,7 +46,6 @@ export default function CreateCourse({
 
   useEffect(() => {
     const submitCourse = async () => {
-      console.log("here");
 
       if (course) {
         course.author = user?.id;
@@ -68,8 +66,6 @@ export default function CreateCourse({
     const courseInput = handleCourseInput(data, location!);
     setCourse(courseInput);
   };
-  console.log(location);
-  console.log(locationValidated);
 
   return (
     <Container>
@@ -91,8 +87,7 @@ export default function CreateCourse({
                   isInvalid={errors.title ? true : false}
                   {...register("title")}
                   onChange={(e) => {
-                    console.log(e.target.value);
-                    console.log(categories);
+
                   }}
                 ></Form.Control>
 

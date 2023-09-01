@@ -35,7 +35,6 @@ export default function AddComment({ course_id }: { course_id: number }) {
       .from("comment")
       .insert(data);
     if (error) {
-      console.log(error);
       let notif = {
         body: error,
         color: "green",

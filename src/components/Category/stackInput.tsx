@@ -13,12 +13,10 @@ export default function InputStack({ setValue, message }: InputProps) {
   const messageError = "Champ invalide";
 
   function setValue_() {
-    console.log(newValue);
     setValue(newValue);
   }
 
   function checkValue() {
-    console.log(newValue);
     if (newValue === "") {
       setValid(false);
       return;

@@ -17,7 +17,6 @@ export default function Home() {
 // export const getServerSideProps: GetServerSideProps = async () => {
 //   const { data, error } = await getAllCategories();
 //   if (error) {
-//     console.log(error.message);
 //   }
 
 //   return {

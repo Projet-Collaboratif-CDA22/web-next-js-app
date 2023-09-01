@@ -16,7 +16,6 @@ export default function CategoryComponent() {
     const fetchCategories = async () => {
       const { data, error } = await getAllCategories();
       if (error) {
-        console.log(error.message);
         setCategories([]);
         fetchError(error);
       } else {
@@ -45,11 +44,8 @@ export default function CategoryComponent() {
 
   useEffect(() => {
     const addCategory = async () => {
-      // console.log(newCategory);
       if (newCategory === "") return;
       if (await categories.find((category) => category.title === newCategory)) {
-        console.log("erreur duplication");
-        // alert("La catégorie existe déjà");
         return;
       }
       const { data, error } = await createCategory(newCategory);

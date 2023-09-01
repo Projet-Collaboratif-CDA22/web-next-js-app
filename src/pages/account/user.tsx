@@ -15,10 +15,7 @@ export default function Home() {
   const [member, setMember] = useState<eRole>();
 
   function handleClick() {
-    console.log(session);
-    console.log(user);
-    console.log(session?.user.role);
-    console.log(member?.toString());
+
   }
 
   useEffect(() => {
@@ -28,13 +25,13 @@ export default function Home() {
         return;
       }
       const role: eRole | undefined = await getRolesByUserId(user!.id);
-      console.log("role response : ", role);
+
       if (role === undefined) {
         setMember(eRole.none);
       } else {
         setMember(role);
       }
-      console.log("role : ", role);
+
     };
     getRole();
   }, [session, user]);

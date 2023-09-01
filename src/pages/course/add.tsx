@@ -17,7 +17,6 @@ export default function Courses() {
     const fetchCategories = async () => {
       const { data, error } = await getAllCategories();
       if (error) {
-        console.log(error);
         setFetchCategoryError(error);
         setCategories([]);
       } else {

@@ -36,7 +36,6 @@ export default function Home() {
     const fetchStat = async () => {
       const { data, error } = await getCategoryStat();
       if (error) {
-        console.log(error.message);
         setStat([]);
         fetchError(error);
       } else {

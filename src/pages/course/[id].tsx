@@ -42,7 +42,6 @@ export default function CoursePageDetails({ course }: { course: Course }) {
       is_flagged: flag,
     };
     updateCourse(updateData).then(({ data, error }) => {
-      console.log(data, error);
     });
 
     setFlagColor(flag ? "danger" : "success");
@@ -57,7 +56,6 @@ export default function CoursePageDetails({ course }: { course: Course }) {
   useEffect(() => {
     const checkSession = () => {
       if (!session && !user) {
-        console.log("Not Connected");
         return Router.push("/account");
       }
     };
@@ -67,7 +65,6 @@ export default function CoursePageDetails({ course }: { course: Course }) {
     const getComments = async () => {
       const { data, error } = await getCommentsByCourseId(course.id);
       if (error) {
-        console.log(error);
         setComs([]);
       } else {
         setComs(data);
@@ -174,7 +171,6 @@ export default function CoursePageDetails({ course }: { course: Course }) {
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const { data, error } = await getCourseById(Number(params?.id));
   if (error) {
-    console.log(error.message);
   }
   return {
     props: {

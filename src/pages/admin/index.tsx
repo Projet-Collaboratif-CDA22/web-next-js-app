@@ -15,9 +15,7 @@ export default function Home() {
   const [member, setMember] = useState<eRole>(eRole.none);
 
   function handleClick() {
-    console.log(session);
-    console.log(user);
-    console.log(session?.user.role);
+
   }
 
   useEffect(() => {
