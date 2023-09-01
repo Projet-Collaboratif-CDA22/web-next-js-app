@@ -61,4 +61,4 @@ jobs:
           ssh-private-key: ${{ secrets.SSH_KEY_EC2 }}
       - run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.RECETTE_USERNAME }}@${{ secrets.RECETTE_HOST }} '
-          sudo docker run ghcr.io/projet-collaboratif-cda22/web-next-js-app:latest'
+          sudo docker run ghcr.io/projet-collaboratif-cda22/web-next-js-app:latest -d -p 3000:80'
