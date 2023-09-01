@@ -45,4 +45,5 @@ jobs:
       - run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.RECETTE_USERNAME }}@${{ secrets.RECETTE_HOST }} '
           cd web-next-js-app
+          ls -lsha
           docker-compose -f docker-compose.development.yml up -d --build'
