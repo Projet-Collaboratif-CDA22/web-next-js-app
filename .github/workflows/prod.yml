@@ -1,7 +1,7 @@
 on:
   pull_request:
     types: [ closed ]
-    branches: [ recette ]
+    branches: [ main ]
 
 jobs:
   deploy-config:
@@ -66,14 +66,3 @@ jobs:
           ssh -o StrictHostKeyChecking=no ${{ secrets.RECETTE_USERNAME }}@${{ secrets.RECETTE_HOST }} "\
           sudo docker pull ghcr.io/projet-collaboratif-cda22/web-next-js-app:latest && \
           sudo docker run -d -p 3000:3000 ghcr.io/projet-collaboratif-cda22/web-next-js-app:latest"
-      - name: Create-PR
-        if: success()
-        uses: devops-infra/action-pull-request@v0.5.5
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          source_branch: recette
-          target_branch: main
-          title: "Auto Merge Request"
-          body: "**Automated pull request**"
-          new_string: "** Automatic pull request**"
-          allow_no_diff: true
