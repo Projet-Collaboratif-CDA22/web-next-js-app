@@ -27,26 +27,30 @@ jobs:
             .env
             /home/runner/.cache/Cypress
           key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
-  deploy-docker:
+  deploy-development:
     runs-on: ubuntu-latest
-    needs: deploy-config
-    if: success()
+    permissions:
+      contents: read
+      packages: write
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/cache@v3
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v2
         with:
-          path: |
-            node_modules
-            .env
-            /home/runner/.cache/Cypress
-          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
-      - name: docker-up
-        uses: webfactory/ssh-agent@v0.7.0
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build and push
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+          NEXT_PUBLIC_MAPBOX_TOKEN: ${{ secrets.MAPBOX_TOKEN }}
+        uses: docker/build-push-action@v4
+        #--build-arg à passer en mdoe manuelle
         with:
-          ssh-private-key: ${{ secrets.SSH_KEY_EC2 }}
-      - run: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.RECETTE_USERNAME }}@${{ secrets.RECETTE_HOST }} '
-          cd web-next-js-app
-          git checkout recette
-          ls -lsha
-          docker-compose -f docker-compose.development.yml up -d --build'
+          build-args: |
+            NEXT_PUBLIC_SUPABASE_URL=${{ secrets.SUPABASE_URL }}
+            NEXT_PUBLIC_SUPABASE_ANON_KEY=${{ secrets.SUPABASE_ANON_KEY }}
+            NEXT_PUBLIC_MAPBOX_TOKEN=${{ secrets.MAPBOX_TOKEN }}
+          push: true
+          tags: ghcr.io/projet-collaboratif-cda22/web-next-js-app:latest
