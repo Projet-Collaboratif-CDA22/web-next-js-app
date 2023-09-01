@@ -16,6 +16,10 @@ jobs:
           echo NEXT_PUBLIC_SUPABASE_URL=${{ secrets.SUPABASE_URL }} >> .env
           echo NEXT_PUBLIC_SUPABASE_ANON_KEY=${{ secrets.SUPABASE_ANON_KEY }} >> .env
           echo NEXT_PUBLIC_MAPBOX_TOKEN=${{ secrets.MAPBOX_TOKEN }} >> .env
+      - name: build
+        run: |
+          npm install
+          npm run build
       - name: Create cache
         uses: actions/cache@v3
         with:
@@ -38,7 +42,8 @@ jobs:
             .env
             /home/runner/.cache/Cypress
           key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
-      - run: npm run e2e:headless
+      - name: run-tests
+        run: npm run e2e:headless
 
       - uses: actions/upload-artifact@v3
         if: success()
