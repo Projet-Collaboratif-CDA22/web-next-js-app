@@ -1,4 +1,6 @@
-on: [ push ]
+on:
+  push:
+    branches: [develop]
 
 jobs:
   deploy-config:
@@ -14,6 +16,10 @@ jobs:
           echo NEXT_PUBLIC_SUPABASE_URL=${{ secrets.SUPABASE_URL }} >> .env
           echo NEXT_PUBLIC_SUPABASE_ANON_KEY=${{ secrets.SUPABASE_ANON_KEY }} >> .env
           echo NEXT_PUBLIC_MAPBOX_TOKEN=${{ secrets.MAPBOX_TOKEN }} >> .env
+      - name: build
+        run: |
+          npm install
+          npm run build
       - name: Create cache
         uses: actions/cache@v3
         with:
@@ -21,27 +27,43 @@ jobs:
             node_modules
             .env
             /home/runner/.cache/Cypress
-          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+          key: cache
   integration-test:
     runs-on: ubuntu-latest
     needs: deploy-config
     steps:
       - uses: actions/checkout@v3
         with:
-          fetch-depth: 0
+          fetch-depth: 1
       - uses: actions/cache@v3
         with:
           path: |
             node_modules
             .env
             /home/runner/.cache/Cypress
-          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
-     # - run: npm run e2e:headless
+          key: cache
+      - name: run-tests
+        run: npm run e2e:headless
+
       - uses: actions/upload-artifact@v3
         if: success()
         with:
           name: e2e-tests
           path: cypress/videos
+  create-pr:
+    runs-on: ubuntu-latest
+    needs: integration-test
+    steps:
+      - uses: actions/checkout@v3
+        with:
+            fetch-depth: 0
+      - uses: actions/cache@v3
+        with:
+          path: |
+            node_modules
+            .env
+            /home/runner/.cache/Cypress
+          key: cache
       - name: Create-PR
         if: success()
         uses: devops-infra/action-pull-request@v0.5.5

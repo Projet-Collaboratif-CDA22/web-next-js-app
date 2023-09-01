@@ -10,7 +10,7 @@ jobs:
       contents: read
       packages: write
     steps:
-      - name: Create ENV file
+      - name: Checkout
         uses: actions/checkout@v3
       - run: |
           touch .env
@@ -43,5 +43,6 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_KEY_EC2 }}
       - run: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.DEV_USERNAME }}@${{ secrets.DEV_HOST }} '
+          ssh -o StrictHostKeyChecking=no ${{ secrets.RECETTE_USERNAME }}@${{ secrets.RECETTE_HOST }} '
+          git clone https://github.com/Projet-Collaboratif-CDA22/web-next-js-app && cd web-next-js-app
           docker-compose -f docker-compose.development.yml up -d --build'
