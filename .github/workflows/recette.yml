@@ -68,13 +68,28 @@ jobs:
           sudo docker stop next && \
           sudo docker rm next && \
           sudo docker run -d -p 3000:3000 --name next ghcr.io/projet-collaboratif-cda22/web-next-js-app:latest"
+
+  create-pr:
+    runs-on: ubuntu-latest
+    needs: [deploy-config, deploy-development,deploy-docker ]
+    steps:
+      - uses: actions/checkout@v3
+        with:
+            fetch-depth: 0
+      - uses: actions/cache@v3
+        with:
+          path: |
+            node_modules
+            .env
+            /home/runner/.cache/Cypress
+          key: cache
       - name: Create-PR
         if: success()
         uses: devops-infra/action-pull-request@v0.5.5
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          source_branch: recette
-          target_branch: main
+          source_branch: develop
+          target_branch: recette
           title: "Auto Merge Request"
           body: "**Automated pull request**"
           new_string: "** Automatic pull request**"
