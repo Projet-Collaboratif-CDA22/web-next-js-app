@@ -50,6 +50,20 @@ jobs:
         with:
           name: e2e-tests
           path: cypress/videos
+  create-pr:
+    runs-on: ubuntu-latest
+    needs: integration-tests
+    steps:
+      - uses: actions/checkout@v3
+        with:
+            fetch-depth: 0
+      - uses: actions/cache@v3
+        with:
+          path: |
+            node_modules
+            .env
+            /home/runner/.cache/Cypress
+          key: cache
       - name: Create-PR
         if: success()
         uses: devops-infra/action-pull-request@v0.5.5
