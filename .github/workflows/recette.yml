@@ -10,7 +10,7 @@ jobs:
       contents: read
       packages: write
     steps:
-      - name: Create ENV file
+      - name: Checkout
         uses: actions/checkout@v3
       - run: |
           touch .env
