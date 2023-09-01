@@ -12,6 +12,11 @@ export default function Home() {
           Someone famous in <cite title="Source Title">Source Title</cite>
         </figcaption>
       </figure>
+      <div className="text-center">
+        <a className="office-form" href="https://forms.office.com/e/CYGa3hK6">
+          Un bug, une idée ? Par ici !
+        </a>
+      </div>
     </>
   );
 }
